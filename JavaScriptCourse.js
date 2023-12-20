@@ -66,3 +66,27 @@
     const aliObj = {
         friends: ['bezi', 'mehran'],
     }
+49
+    const obj = {
+        firstName: "alireza",
+        lastName: "jodat",
+        fre: ["bezi", "ali"]
+    }
+    console.log(obj.firstName);
+
+    // second whay...
+    const concatName = "Name"
+    console.log(obj[`first${concatName}`]); /* better than for oprating */
+    console.log(obj[`last${concatName}`]); /* better than for oprating */
+
+    const prompt1 = prompt('what do you think?')
+    console.log(obj[prompt1]);
+
+    // how to add
+    obj.friend = "ali"
+    obj["friend"] = "ali"
+
+    // how to accsses to array in obj
+    console.log(`${obj.fre[0]} - ${obj.fre.length}`);
+    
+    
