@@ -86,7 +86,50 @@
     obj.friend = "ali"
     obj["friend"] = "ali"
 
-    // how to accsses to array in obj
+    // how to accsses to array in 
     console.log(`${obj.fre[0]} - ${obj.fre.length}`);
-    
-    
+50
+    const newObj = {
+        firstName: "ali",
+        func1: function (params) {
+            // for create new item in object
+            this.age = 19;  
+
+            console.log(this.firstName);
+        },
+        func2: () => console.log("first")
+    }
+    console.log(newObj.func1(19));
+    /* second way */
+    console.log(newObj["func1"](19));
+54
+    const arr = []
+    for (let i = 0; i < 5; i++) {
+        arr[i] = i;
+        
+        // second way
+        arr.push(10 - i)
+    }
+
+    const arr4 = ['ali', 2, true, 'mehran']
+    for (let i = 0; i < arr4.length; i++) {
+        if (typeof arr4[i] !== "string") continue; /* jump to next step by continue */
+        console.log(arr4[i]);
+    }
+    for (let i = 0; i < arr4.length; i++) {
+        if (typeof arr4[i] !== "number") break; /* console.log is empty (end for loop) */
+        console.log(arr4[i]);
+    }
+56
+    let random = Math.trunc(Math.random() * 7) + 1
+    while (random !== 6) {
+        console.log("first")
+        random = Math.trunc(Math.random() * 7) + 1
+    }
+63
+    // how to use prettier customize
+    // how to use user snippets
+    // intro yourself extentions
+64
+    // how to install live server by node js
+    // npm install live-server -g
