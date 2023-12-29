@@ -463,4 +463,87 @@
     // const str = "ali"
     // const arr = [...str, "s"]
     // console.log(arr) /* ["a", "l", "i", "s"] */
-    // console.log(`${...str}`) /* => error */
+    // console.log(`${...str}`) /* => error */  
+
+    // const obj = {
+    //     func: function(num1, num2) {
+    //         console.log(`${num1} , ${num2}`)
+    //     }
+    // }
+    // obj.func([prompt("enter num..."), prompt("enter num...")])
+    // second way
+    // const arr = [prompt("enter num..."), prompt("enter num...")]
+    // obj.func(...arr)
+
+    // copy with spread oprator
+    // const obj = {
+    //     fN: "ali",
+    //     lN: "jodat"
+    // }
+    // const obj2 = {num: 3, ...obj}
+    // console.log(obj2) /* 3 "ali" "jodat" */
+    // coppying object
+    // const copyObj = {...obj2}
+    // copyObj.lN = "johnnesar"
+    // console.log(copyObj.lN) /* johnnesar */
+    // console.log(obj2.lN) /* jodat */
+ 114
+    // const arr = [1, 2, 3, 4, 5]
+    // const [a, b, ...others] = arr
+    // console.log(a, b, others) /* 1 2 [3, 4, 5] */
+
+    // const arr = ["ali","jodat"]
+    // const arr1 = ["a", "j"]
+    // const [fname, , ...object1, b] = [...arr, ...arr1] /* error for b */
+    // const [fname, , ...object1] = [...arr, ...arr1]
+    // console.log(fname, object1) /* "ali" "a" "j" */
+    
+    // object spread oprator
+    // const obj = {
+    //     sat: true,
+    //     sun: false,
+    //     mon:true
+    // }
+    // const {sun, ...others} = obj
+    // console.log(sun, others) /* { sun: false, { sat: true, mon:true } } */
+
+    // const add = function(...num) {
+    //     console.log(num)
+    // }
+    // add(1, 2, 3, 4) /* [1, 2, 3, 4] */
+
+    // const add = function(...num) {
+        // let sum = 0
+        // first way
+        // num.forEach(item, sum += item)
+        // second way
+        // num.forEach(item, () => sum += item)
+    // }
+    // add(1, 2, 3, 4) /* 10 */
+
+    // const obj = {
+    //     func: function(first, ...others) {
+    //         console.log(first)
+    //         console.log(others)
+    //     }
+    // }
+    // obj.func("ali", "reza", "a") /* "ali" */ /* "reza", "a" */
+115
+    // short circet اتصال کوتاه یا
+    // اگر طرف اول ارزش واقعی داشته باشد یا به عبارتی درست باشد. سریعا برمیگردد
+    // console.log(3 || "ali") /* 3 */
+    // console.log("" || "ali") /* "ali" */ 
+    // console.log(true || 0) /* true */
+    // console.log(undefined || null) /* null */
+    // console.log(undefined || null || 0 || "hello") /* "hello" */
+
+    const obj = {}
+    // first way
+    const result = obj.fN ? obj.fN : "none"
+    console.log(result) /* "none" */
+    // second way
+    const newResult = obj.lN || "not existed"
+    console.log(newResult) /* "not existed" */
+
+    // 09:00 min
+
