@@ -1,3 +1,4 @@
+sync
 29
     // switch (key) {
     //     case "ali":
@@ -162,3 +163,150 @@
     // document.querySelector(".div").addEventListener("click", function () {
     //     console.log("first");
     // })
+86
+    // const innerHtml = message => document.querySelector("message").textContent = message
+    // innerHtml("you lost...") 
+88 
+    // const btns = document.querySelectorAll("btns")
+    // for (let i = 0; i < btns.length; i++) btns[i].addEventListener("click", () => {
+    //     document.querySelector("modal").classList.remove("hidden")
+    // })
+
+    // const closeModal= () => document.querySelector("modal").classList.add("hidden")    
+    // btnClose.addEventListener("click", closeModal)
+89
+    // document.addEventListener("keydown", (event) => {
+    //     event.key === "Escape" && !modal.classList.contains("hidden")
+    //         ? closeModal()
+    //         : console.log("first")
+    // })
+91
+    // bntRoll.addEventListener("click", () => {
+    //     const dice = Math.trunc(Math.random() * 6) + 1
+    //     diceImg.src = `dice-${dice}.png`
+    // })
+92 
+    // let activePlayer = 0
+    // document.querySelector(`curren--${activePlayer}`).textContent = 0
+    // activePlayer = activePlayer === 0 ? 1 : 0
+
+    // second way
+    // activePlayer = !activePlayer ? 1 : 0
+
+    // player0El.classList.toggle("player-active")
+    // player1El.classList.toggle("player-active")
+94
+    // let t1, t2, t3;
+99
+    // arrow function have not (arguments object and this keyword)
+101
+    // const calcAge = () => {
+    //     console.log(`${firstName}`) 
+    // }
+    // const firstName = "ali"
+    // calcAge()
+
+    // let and const (block)
+    // var (global)
+103
+    // hoisting
+
+    // for variable
+
+    // console.log(ali) /* undifind */
+    // var ali = "reza"
+
+    // console.log(reza) /* error */
+    // const reza = "alli"
+
+    // console.log(m) /* error */
+    // let m = "g"
+
+    // for functions
+
+    // a() /* OK! */
+    // function a() {
+    //     console.log("a")
+    // }
+
+    // a() /* error */
+    // const a = () => console.log("a")
+
+    // a() /* error */
+    // const a = function() {
+    //     console.log("a")
+    // }
+
+    // a(1, 2) /* undifind(1, 2) => error: is not a function */
+    // var a = (a, b) => console.log(a, b)
+
+    // you dont use of (var)
+105
+    // console.log(this) /* => window object */
+
+    // const a = function() {
+    //    console.log(this) /* => undifind */
+    // }
+
+    // const a = () => console.log(this) /* => window */
+
+    // const a = {
+    //     func: function() {
+    //         console.log(this) /* return => a object */
+    //     }   
+    // }
+    // a.func()
+
+    // const a = {
+    //     func: function() {
+    //         console.log(this)
+    //     }
+    // }
+    // const b = {
+    //     firstName: "ali"
+    // }
+    // b.func2 = a.func
+    // b.func2() /* this => b object */
+
+    // const a = {
+    //     func: () => console.log(this) /* return => window object */
+    // }
+
+    // const a = {
+    //     /* a not code block */
+    // }
+    
+106
+
+    // const a = {
+    //     first: "ali",
+    //     func: function() {
+    //         const func2 = function() {
+    //             console.log(this) /* this => undifind */
+    //             console.log(this.first) /* this.year => undifind */
+    //         }
+    //         func2()
+    //     }
+    // }
+    // a.func()
+
+    // solution top problem 👆
+
+    // const a = {
+    //     first: "ali",
+    //     func: function() {
+    //         const self = this
+    //         const func2 = function() { 
+    //             console.log(self.first) /* self.first => "ali" */
+    //         }
+    //         func2()
+    //     }
+    // }
+    // a.func()
+
+    // arguments keyword
+
+    // const a = (a, b) => {
+    //     console.log(arguments)
+    // }
+    // a()
