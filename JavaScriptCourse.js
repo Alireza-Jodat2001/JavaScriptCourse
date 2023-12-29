@@ -1,4 +1,3 @@
-sync
 29
     // switch (key) {
     //     case "ali":
@@ -277,7 +276,6 @@ sync
     // }
     
 106
-
     // const a = {
     //     first: "ali",
     //     func: function() {
@@ -310,3 +308,159 @@ sync
     //     console.log(arguments)
     // }
     // a()
+107
+    // const me = {
+    //     age: 12
+    // }
+    // const friend = me
+    // friend.age = 30
+    // console.log(me.age) /* age => 30 */ 
+    // console.log(friend.age) /* age => 30 */
+108
+    // const me = {
+    //     firstName: "ali"
+    // }
+    // const friend = me
+    // friend.firstName = "reza" /* OK! */ 
+    // friend = {} /* error because friend is a (constant) */
+
+    // coppying object but is not deep
+    // const a = {
+    //     age: 12,
+    //     arr: [1, 3]
+    // }
+    // const b = Object.assign({}, a)
+    // b.age = 30
+    // console.log(a.age) /* 12 */
+    // console.log(b.age) /* 30 */
+    // b.arr.push("ali")
+    // console.log(a.arr) /* [1, 3, "ali"] not deep! */
+    // console.log(b.arr) /* [1, 3, "ali"] not deep! */
+111
+    // const arr = [1, 2, 3]
+    // const [a, b, c] = arr
+    // console.log(a, b, c)
+
+    // const a = {
+    //     categories: ["car", "game", "food"]
+    // }
+    // const [first, second] = a.categories
+    // console.log(first, second) /* "car" "game" */
+    // const [x, ,y] = a.categories
+    // console.log(x, y) /* "car" "food" */
+
+    // reverse first and second
+    // const a = {
+    //     cat: ["car", "game", "food"]
+    // }
+    // let [first, ,second] = a.cat
+    // console.log(first, second) /* "car" "food" */
+    // [first, second] = [second, first] /* reversed to first and second */
+    // console.log(first, second) /* "food" "car" */
+
+    // example for reverse first and second
+    // const a ={
+    //     arr1: ["ali", "reza"],
+    //     arr2: ["mohsen", "behzad"],
+    //     func1: function(startIndex, endIndex) {
+    //         return [this.arr1[startIndex], this.arr2[endIndex]]
+    //     }
+    // }
+    // let [first, second] = a.func1(0, 1)
+    // [first, second] = [second, first]
+    // console.log(first, second) /* "behzad" "ali" */
+
+    // for nested destructuring
+    // const arr = [1, 2, [3, 5]]
+    // const [i, , [j, k]] = arr
+    // console.log(i, j, k) /* 1 3 5 */
+
+    // destructuring
+    // const [a, b, c] = [8, 9]
+    // console.log(a, b, c) /* 8 9 undifind */
+
+    // default values in destructuring
+    // const [a = 0, b = 0, c = 0] = [8]
+    // console.log(a, b, c) /* 8 0 0 */
+112
+    // const obj = {
+    //     fName: "ali",
+    //     lName: "jodat",
+    //     age: 22
+    // }
+    // const {fName, age, lName} = obj /* order is unimportant */
+    // console.log(fName, age, lName) /* "ali" 22 "jodat" */
+
+    // destructure obj with custom name variable 
+    // const obj = {
+    //     fName: "ali",
+    //     lName: "jodat",
+    //     age: 22
+    // }
+    // const {fName: fN, lName: lN, age: a} = obj
+    // console.log(fN, lN, a)
+
+    // default values in destructuring obj
+    // const obj = {
+    //     a: [1, 2],
+    //     b: ["a", "b"]
+    // }
+    // const {menu = "", b: str1 = [], a: num1 = 0} = obj /* if menu = [] => [], else if menu => undifind */
+    // console.log(menu, str1, num1) /* "" ["a", "b"] [1, 2] */
+
+    // let a = 100
+    // let b = 200
+    // const obj = {
+    //     a: 12,
+    //     b: 13,
+    //     c: 14
+    // }
+    // ({a, b} = obj) /* if {a, b} = obj => error, but ({a, b} = obj) is OK! */
+    // console.log(a, b) /* 12 13 */
+
+    // nested object
+    // const obj = {
+    //     obj2: {
+    //         open: 10,
+    //         close: 20
+    //     }
+    // }
+    // const {obj2} = obj
+    // console.log(obj2) /* {open: 10, close: 20} */
+    // const {obj2: {open, close}} = obj
+    // console.log(open, close) /* 10 20 */
+    // const {obj2: {open: op = {}, close: cl = "-"}} = obj
+    // console.log(op, cl) /* 10 20 */
+
+    // destructure with argument function
+    // const obj = {
+    //     func: function({fName: fN = "none", lName: lN = "none"}) {
+    //         console.log(fN, lN)
+    //     }
+    // }
+    // obj.func({fName: "ali", lName: "jodat"})
+
+    // const obj = {
+    //     a: "a"
+    // }
+    // const {a: str1 = "none", b = 0} = obj
+    // console.log(str1, b) /* "a" 0 */
+113
+    // const arr = [7, 8, 9]
+    // const newArr = [1, 2, ...arr]
+    // console.log(newArr) /* [1, 2, 7, 8, 9] */
+    // const nA = [1, 2, arr]
+    // console.log(nA) /* [1, 2, Array(3)] */
+    // console.log(...arr) /* 7 8 9 */
+
+    // const obj = {
+    //     menu: ["a", "b", "c"]
+    // }
+    // const newArr = [...obj.menu, "ali"]
+    // console.log(newArr) /* ["a", "b", "c", "ali"] */
+
+    // Iterables => string, array, maps, sets. but not object
+    // const str = "ali"
+    // const arr = [...str, "s"]
+    // console.log(arr) /* ["a", "l", "i", "s"] */
+    // console.log(`${...str}`) /* => error */
