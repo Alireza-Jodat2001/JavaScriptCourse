@@ -715,3 +715,53 @@
     // console.log(arr[0]?.a ?? "index 0 undefined") /* "ali" */
     // console.log(arr[1]?.a ?? "index 0 undefined") /* "index 0 undefined" */
 122
+    // forOf loop on objects
+    // const obj = {
+    //     a: {
+    //         x: "reza"
+    //     },
+    //     b: {
+    //         x: "r"
+    //     },
+    //     c: {
+    //         x: "ra"
+    //     },
+    // }
+    // 1
+    // for (const item of Object.keys(obj)) { /* Object.keys(obj) === is Array */
+        // console.log(item) /* a b c */ 
+    // }
+    // 2
+    // console.log(Object.keys(obj)) /* ['a', 'b', 'c'] */
+    // 3
+    // for (const item of Object.values(obj)) { 
+        // console.log(item) /* {x: 'reza'} {x: 'r'} {x: 'ra'} */ 
+    // }
+    // 4
+    // console.log(Object.values(obj)) /* [{…}, {…}, {…}] */
+    // 5
+    // for (const item of Object.values(obj)) {
+        // console.log(item?.x) /* reza r ra */
+    // }
+    // 6
+    // console.log(Object.entries(obj)) /* [Array(2), Array(2), Array(2)] */
+    // 7
+    // console.log(Object.entries(obj)[0]) /* ["a", {x: "reza"}] => [key, {values}] */
+    // 8
+    // for (const item of Object.entries(obj)) {
+        // console.log(item?.[0]) /* a b c => keys */
+        // console.log(item?.[1]) /* {x: "reza"} {x: "r"} {x: "ra"} => values */
+    // }
+    // 9
+    // for (const [key, value] of Object.entries(obj)) {
+        // console.log(key) /* a b c => keys */
+        // console.log(value) /* {x: "reza"} {x: "r"} {x: "ra"} => values */
+    // }
+    // 10
+    // for (const [key, {x, y: newY = "not Existed"}] of Object.entries(obj)) {
+        // console.log(key) /* a b c => keys */
+        // console.log(x) /* reza r ra => values */
+        // console.log(newY) /* "not Existed" => values */
+    // }
+123
+    "5:48"
