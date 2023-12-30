@@ -764,4 +764,110 @@
         // console.log(newY) /* "not Existed" => values */
     // }
 123
-    "5:48"
+    // const arr = ["leo", "leva", "ronaldo"]
+    // for (let [index, name] of arr.entries()) console.log(`goal ${++index}: ${name}`) /* goal 0: leo goal, 1: leva goal, 2: ronaldo */
+
+    // 1
+    // const obj = {
+    //     scored: {
+    //         ali: 12,
+    //         reza: 34,
+    //         mehran: 9
+    //     }
+    // }
+    // const scoredArr = Object.values(obj.scored)
+    // let average = 0
+    // for (const item of scoredArr) {
+    //     average += item
+    // }
+    // console.log(average /= scoredArr.length) /* 18.3 */
+
+    // 2
+    // const obj = {
+    //     scored: {
+    //         ali: 12,
+    //         reza: 34,
+    //         mehran: 9
+    //     }
+    // }
+    // const scoredArr = Object.entries(obj.scored)
+    // let average = 0
+    // for (const item of scoredArr) average += item?.[1]
+    // console.log(average /= scoredArr?.length) /* 18.3 */
+
+    // 3
+    // const obj = {
+    //     scored: {
+    //         ali: 12,
+    //         reza: 34,
+    //         mehran: 9
+    //     }
+    // }
+    // for (const [ name, scored ] of Object.entries(obj.scored)) {
+        // 1
+        // if (name === "reza") continue
+        // console.log(`${name}: ${scored}`)
+        // 2
+    //     name === "reza" ? '' : console.log(`${name}: ${scored}`)
+    // }
+124
+    // LEARN SET()
+
+    // 1
+    // const ns = new Set(["p", "p", 1])
+    // console.log(ns); /* {'p', 1} => عناصر تکراری ندارد */
+
+    // 2
+    // const ns = new Set("ali")
+    // console.log(ns) /* {'a', 'l', 'i'} => because string is itrables */
+    // console.log(ns.size) /* 3 */
+
+    // 3
+    // const ns = new Set(["p", "p", 1])
+    // console.log(ns.has("p")) /* true */
+    // console.log(ns.has("b")) /* fale */
+
+    // 4
+    // const ns = new Set(["p", "p", 1])
+    // ns.add("behzad")
+    // ns.add("behzad")
+    // console.log(ns) /* {'p', 1, 'behzad'} => عنصر تکراری ندارد */
+    // ns.delete(1) /* این روش در آرایه نیست */
+    // console.log(ns) /* Set(2) {'p', 'behzad'} */
+    // console.log(ns[0]) /* undefined */
+    // ns.clear()
+    // console.log(ns) /* Set(0) {size: 0} */
+    
+    // 5
+    // const ns = new Set(["p", "p", 1])
+    // for (const item of ns) console.log(item);
+
+    // 6
+    // const arr = ['p', 'p', 'p', 'b', 1]
+    // const ns = new Set(arr)
+    // console.log(ns) /* Set(3) {'p', 'b', 1} => برای حذف عناصر تکراری این روش مناسب است */
+    
+    // 7
+    // convert set() to array
+    // const arr = ['p', 'p', 'p', 'b', 1]
+    // const ns = [...new Set(arr)]
+    // console.log(ns) /* (3) ['p', 'b', 1] */
+
+    // 8
+    // const obj = {
+    //     a: "a",
+    //     b: "a",
+    //     c: "a",
+    // }
+    // const array = [...obj]
+    // console.log(array) /* error => obj is not iterable */
+     
+    // 9
+    // const str = "ali"
+    // const arr = [...str]
+    // console.log(arr) /* ['a', 'l', 'i'] => چون تکرار شونده هست */
+    
+    // 10
+    // console.log(new Set("ali").size) /* 3 => چون تکرار شونده هست */
+    
+    
