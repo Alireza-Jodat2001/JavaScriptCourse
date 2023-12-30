@@ -869,5 +869,83 @@
     
     // 10
     // console.log(new Set("ali").size) /* 3 => چون تکرار شونده هست */
+125
+    // LEARN MAP()
     
+    // const nm = new Map()
+    // nm.set("ali", 22)
+    // console.log(nm) /* Map(2) {'ali' => 22} */
+    // nm.set(true, 21).set("categories", [true, false])
+    // console.log(nm) /* Map(3) {'ali' => 22, true => 21, 'categories' => Array(2)} */
+    
+    // const nm = new Map()
+    // nm.set("name", "alireza").set("age", 22).set(true, "live")
+    // console.log(nm.get("name")) /* alireza */
+    // console.log(nm.get("age")) /* 22 */
+    // console.log(nm.get(true)) /* live */
+    
+    // const nm = new Map()
+    // nm
+    // .set("open", 11)
+    // .set("close", 20)
+    // .set(true, "is open")
+    // .set(false, "is closed")
+    // const time = 21
+    // console.log(nm.get(time > nm.get("open") && time < nm.get("close"))) /* is closed */
+        
+    // const nm = new Map()
+    // nm
+    // .set("open", 11)
+    // .set("close", 20)
+    // console.log(nm.has("open")) /* true */
+    // nm.delete("open")
+    // console.log(nm) /* Map(1) {'close' => 20} */
+    // console.log(nm.size) /* 1 */
+    // nm.clear()
+    // console.log(nm, nm.size) /* Map(0) {size: 0} 0 */
+    
+    // const nm = new Map()
+    // nm
+    // .set([1, 2], "test")
+    // console.log(nm.get([1, 2])) /* error => undefined => زیرا آدرس آنها با هم یکسان نیستند */
+
+    // fix top problem
+    // const nm = new Map()
+    // const arr = [1, 2]
+    // nm
+    // .set(arr, "test")
+    // console.log(nm.get(arr)) /* test => زیرا آدرس آنها با هم یکسان است */
+
+    // const nm = new Map()
+    // nm
+    // .set(document.querySelector("body"), "this is body...!!")
+    // console.log(nm.get(document.body)) /* this is body...!! */
+    // console.log(nm) /* Map(1) {body => 'this is body...!!'} */
+126
+    // const nm = new Map([
+    //     [1, "c"],
+    //     [2, "c+"],
+    //     [3, "c++"],
+    // ])
+    // console.log(nm) /* Map(3) {1 => 'c', 2 => 'c+', 3 => 'c++'} */
+    
+    // روشی برای تبدیل اشیاء به مپ
+    // const obj = {
+    //     "a": 1,
+    //     "b": 2
+    // }
+    // console.log(Object.entries(obj)) /* ['a', 1] ['b', 2] */ 
+
+    // روشی برای تبدیل آرایه به مپ
+    // const arr = ["a","b"]
+    // const nm = new Map(Object.entries(arr))
+    // console.log(nm) /* Map(2) {'0' => 'a', '1' => 'b'} */
+    // مقدار اول ایندکس و دوم ارزش
+    
+    // const obj = {
+    //     "a": 1,
+    //     "b": 2
+    // }
+    // const nm = new Map(Object.entries(obj))
+    // console.log(nm) /* Map(2) {'a' => 1, 'b' => 2} */
     
