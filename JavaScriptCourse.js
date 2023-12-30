@@ -529,21 +529,189 @@
     // }
     // obj.func("ali", "reza", "a") /* "ali" */ /* "reza", "a" */
 115
+    // ---- OR ----
     // short circet اتصال کوتاه یا
     // اگر طرف اول ارزش واقعی داشته باشد یا به عبارتی درست باشد. سریعا برمیگردد
+    
     // console.log(3 || "ali") /* 3 */
     // console.log("" || "ali") /* "ali" */ 
     // console.log(true || 0) /* true */
     // console.log(undefined || null) /* null */
     // console.log(undefined || null || 0 || "hello") /* "hello" */
 
-    const obj = {}
+    // const obj = {}
     // first way
-    const result = obj.fN ? obj.fN : "none"
-    console.log(result) /* "none" */
+    // const result = obj.fN ? obj.fN : "none"
+    // console.log(result) /* "none" */
     // second way
-    const newResult = obj.lN || "not existed"
-    console.log(newResult) /* "not existed" */
+    // const newResult = obj.lN || "not existed"
+    // console.log(newResult) /* "not existed" */
 
-    // 09:00 min
+    // ---- AND ----
+    // با دیدن مقدار درست به سراغ بعدی میرود تا اینکه به مقدار نادرست برسد و همان را برگرداند
 
+    // console.log(0 && "jonas") /* 0 */
+    // console.log(7 && "jonas") /* "jonas" */
+    // console.log("hello" && 23 && null && true) /* null */
+
+    // first way
+    // const obj = {
+    //     ali: function() {
+    //         console.log(obj.ali)
+    //     }
+    // }
+    // if (obj.ali) {
+    //     console.log(obj.ali) /* function()... */
+    // }
+    // second way
+    // obj.reza && console.log(obj.reza) /* error or undefined */
+116
+    // nullish values null and undefined (not a 0 and "")
+    // با دیدن مقدار نال یا آندیفایند به سراغ بعدی میرود
+    // ولی اگر نال یا آندیفایند نبود همان را برمیگرداند
+
+    // console.log(0 ?? 10) /* 0 */
+    // console.log("" ?? 10) /* "" */
+    // console.log(undefined ?? 10) /* 10 */
+    // console.log(null ?? 10) /* 10 */
+117
+    // OR assignment operator 
+    // مقدار دهی میکند در صورت نادرست بودن آن متغیر
+    // const obj = {
+    //     fn: "ali"
+    // }
+    // first way
+    // obj.fn = obj.fn || "reza" /* fn: "ali" */
+    // obj.ln = obj.ln || "reza" /* ln: "reza" */
+    // second way
+    // obj.fn ||= "reza" /* fn: "ali" */
+    // obj.ln ||= "reza" /* ln: "reza" */
+
+    // nullish assignment operator
+    // const obj = {
+    //     fn: "ali"
+    // }
+    // obj.fn ??= 10 /* "ali" */ 
+    // obj.ln ??= "reza" /* "reza" */ 
+
+    // AND assignment operator
+    // const obj = {
+    //     fn: "ali"
+    // }
+    // obj.fn = obj.fn && "<ANONYMOUS>" /* <ANONYMOUS> */
+    // obj.ln = obj.ln && "<ANONYMOUS>" /* undefined */
+    // obj.fn &&= "<ANONYMOUS>" /* <ANONYMOUS> */
+    // obj.ln &&= "<ANONYMOUS>" /* obj = {fn: "ali"} ال ان ساخته نمیشود */
+118
+    // const game = {
+    //     score: "4:0",
+    //     odds: {
+    //         team1: 1.33,
+    //         x: 3.25,
+    //         team2: 6.5
+    //     }
+    // }
+    // const { odds } = game
+    // console.log(odds) /* odds: { game: {...} } */
+    // const { odds: { score, x: newX = 0, team2 } } = game
+    // console.log( score, newX, team2 ) /* 1.33 3.25 6.5 */
+119
+    // forOf loop (Iterables)
+    // const arr = [1, 2, "ali"]
+    // for (const item of arr) console.log(item) /* 1 2 "ali" */
+    // first way
+    // for (const item of arr.entries()) console.log(item) /* [0, 1] [1, 2] [2, "ali"] ... [index, values] */
+    // second way
+    // const newArr = [...arr.entries()]
+    // console.log(newArr) /* [0, 1] [1, 2] [2, "ali"] ... [index, values] */
+    // console.log(newArr[2][1]) /* "ali" */
+120
+    // 1
+    // const obj = {
+    //     a: {
+    //         b: {
+    //             open: 1
+    //         },
+    //         c: {
+    //             open: 1
+    //         },
+    //         d: {
+    //             open: 1
+    //         },
+    //     }
+    // }
+    // 2
+    // const a = {
+    //     b: {
+    //         open: 1
+    //     },
+    //     c: {
+    //         open: 1
+    //     },
+    //     d: {
+    //         open: 1
+    //     },
+    // }
+    // const newObj = {
+    //     a,
+    //     func() {
+    //         console.log("ali")
+    //     }
+    // }
+    // 3
+    // const arr = ["f1", "f2", "f3"]
+    // const obj = {
+    //     [arr[0]]: {
+    //         open: 1
+    //     },
+    //     [arr[1]]: {
+    //         open: 1
+    //     },
+    //     [arr[2]]: {
+    //         open: 1
+    //     },
+    // }
+121
+    // optional chaining
+    // 1
+    // const obj = {
+    //     a: {
+    //         b: "bbb"
+    //     }
+    // }
+    // if (obj.a && obj.a.b) console.log(obj.a.b) /* "bbb" */
+    // 2
+    // console.log(obj.a?.b) /* "bbb" */
+    // console.log(obj.c?.d) /* undefined */
+    // 3
+    // console.log(obj?.c?.d) /* undefined */
+    // 4
+    // const arr = ["f1", "f2", "f3", "f4"]
+    // const obj = {
+    //     [arr[0]]: {
+    //         open: 1
+    //     },
+    //     [arr[1]]: {
+    //         open: 2
+    //     },
+    //     [arr[2]]: {
+    //         open: 3
+    //     },
+    // }
+    // for (const item of arr) {
+    //     const result = obj?.[item]?.open ?? `item: ${item} is null or undefined` 
+    //     console.log(result) /* 1 2 3 "item: f4 is null or undefined" */
+    // }
+
+    // const obj = {
+    //     order(a, b) {
+    //         console.log(a, b)
+    //     }
+    // }
+    // obj?.order?.(1, 2) /* 1 2 */
+    // console.log(obj?.o?.(1, 2) ?? "o is undefined") /* "o is undefined" */
+
+    // const arr = [{a: "ali"}]
+    // console.log(arr[0]?.a ?? "index 0 undefined") /* "ali" */
+    // console.log(arr[1]?.a ?? "index 0 undefined") /* "index 0 undefined" */
+122
