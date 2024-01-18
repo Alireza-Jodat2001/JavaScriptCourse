@@ -936,7 +936,7 @@
     // }
     // console.log(Object.entries(obj)) /* ['a', 1] ['b', 2] */ 
 
-    // روشی برای تبدیل آرایه به مپ
+    // روشی برای تبدیل آرایه ای از آرایه ها به مپ
     // const arr = ["a","b"]
     // const nm = new Map(Object.entries(arr))
     // console.log(nm) /* Map(2) {'0' => 'a', '1' => 'b'} */
@@ -948,4 +948,46 @@
     // }
     // const nm = new Map(Object.entries(obj))
     // console.log(nm) /* Map(2) {'a' => 1, 'b' => 2} */
+
+    // const name = new Map([
+    //     [1, "alireza"], 
+    //     ["behzad" , 2],
+    //     [true, "ali"],
+    //     [false, "reza"]
+    // ])
+    // for (const [key, value] of name) console.log(`is key: ${key} is value: ${value}`)
+
+    // const name = new Map([
+    //     [1, "alireza"], 
+    //     ["behzad" , 2],
+    //     [true, "ali"],
+    //     [false, "reza"]
+    // ])
+    // for (const [key, value] of name) typeof key === "boolean" && console.log(`is boolean value: ${value}`)
     
+    // Map method
+    // const name = new Map([
+    //     [1, "alireza"], 
+    //     ["behzad" , 2],
+    //     [true, "ali"],
+    //     [false, "reza"]
+    // ])
+    // console.log(name.get(true)) /* ali */
+
+    // const name = new Map([
+    //     [1, "alireza"], 
+    //     ["behzad" , 2],
+    //     [true, "ali"],
+    //     [false, "reza"]
+    // ])
+    // const myPrompt = Number(prompt("put your number..."))
+    // for (const [key, value] of name) (value === myPrompt || typeof value === "number") && console.log(`this is ${key}`)
+
+    // const name = new Map([
+    //     [1, "alireza"], 
+    //     ["behzad" , 2],
+    //     [true, "ali"],
+    //     [false, "reza"]
+    // ])
+    // const myPrompt = Number(prompt("put your number..."))
+    // for (const [key, value] of name) value === myPrompt && console.log(name.get(value === myPrompt)) /* "ali" */
