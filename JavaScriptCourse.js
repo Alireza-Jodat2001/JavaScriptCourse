@@ -1006,13 +1006,13 @@
     // console.log([...name.keys()]) /* [1, 'behzad', true, false] */
     // console.log([...name.values()]) /* ['alireza', 2, 'ali', 'reza'] */
 128
-    const gameEvents = new Map([
-        [17, "Goal"],
-        [36, "Yellow card"],
-        [42, "Corner"],
-        [60, "Goal"],
-        [89, "Red card"],
-    ])
+    // const gameEvents = new Map([
+    //     [17, "Goal"],
+    //     [36, "Yellow card"],
+    //     [42, "Corner"],
+    //     [60, "Goal"],
+    //     [89, "Red card"],
+    // ])
     // // حذف مقادیر تکراری و قرار دادن آن به صورت آرایه
     // const arr = [...new Set(gameEvents.values())]
     // console.log(arr) /* ['Red card', 'Yellow card'] */
