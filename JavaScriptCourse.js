@@ -1030,3 +1030,39 @@
     //     min <= 45 
     //     ? console.log(`[first half] => This event ${event} in ${min} minute...`) 
     //     : console.log(`[second half] => This event ${event} in ${min} minute...`)
+129
+    // // string method
+    // const name = "alireza jodat"
+    // const numberStr = "12345"
+    // // به دست آوردن حروف به روش خانه های آرایه
+    // console.log(name[6]) /* a */
+    // // روش دوم
+    // console.log("ali"[1]) /* l */
+    // // استفاده از متد های رشته
+    // console.log(numberStr.length) /* 5 */
+    // console.log("12".length) /* 2 */
+    // // متد برای ایندکس
+    // const str = "rrrr"
+    // console.log(str.indexOf("r")) /* first index */
+    // console.log("bbb".indexOf("b")) /* first index */
+    // // آخرین ایندکس
+    // console.log(str.lastIndexOf("r")) /* last index */
+    // console.log("bbb".lastIndexOf("b")) /* last index */
+    // // پیدا کردن ایندکس کلمه
+    // console.log(name.indexOf("jodat")) /* first index */
+    // console.log("ali vs behzad".indexOf("jodat")) /* -1 for undefined */
+    // // متد اسلایس هم برای رشته است هم برای آرایه
+    // console.log(numberStr.slice(2)) /* 345 */
+    // console.log(numberStr.slice(2, 4)) /* 34 */
+    // // اسلایس کردن اولین کلمه
+    // console.log(name.slice(0, name.indexOf(" "))) /* alireza */
+    // // اسلایس کردن آخرین کلمه
+    // console.log(name.slice(name.lastIndexOf(" ") + 1))
+    // // استفاده از اعداد منفی برای اسلایس
+    // console.log(name.slice(2, -2)) /* ireza jod */
+    // console.log(name.slice(-3)) /* dat */
+    // // اطلاعات اضافی در مورد رشته ها
+    // console.log(new Set(name)) /* شبیه به آبجکت است که کلید آن ایندکس و مقدار آن حرف ها است */
+    // console.log(new String(name)) /* شبیه به آبجکت است که کلید آن ایندکس و مقدار آن حرف ها است */
+    // console.log(typeof new String(name)) /* تایپ آن آبجکت است */
+    // console.log(typeof new String(name).slice(2)) /* وقتی آن را اسلایس میکنیم تایپ آن به رشته تغییر میکند */
