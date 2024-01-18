@@ -991,3 +991,42 @@
     // ])
     // const myPrompt = Number(prompt("put your number..."))
     // for (const [key, value] of name) value === myPrompt && console.log(name.get(value === myPrompt)) /* "ali" */
+
+    // روشی برای تبدیل کردن مپ به آرایه
+    // const name = new Map([
+    //     [1, "alireza"], 
+    //     ["behzad" , 2],
+    //     [true, "ali"],
+    //     [false, "reza"]
+    // ])
+    // console.log(...name) /* [1, 'alireza'] ['behzad', 2] (2) [true, 'ali'] (2) [false, 'reza'] */
+    // console.log(name.entries()) /* MapIterator {1 => 'alireza', 'behzad' => 2, true => 'ali', false => 'reza'} */
+    // console.log(name.keys()) /* MapIterator {1, 'behzad', true, false} */
+    // console.log(name.values()) /* MapIterator {'alireza', 2, 'ali', 'reza'} */
+    // console.log([...name.keys()]) /* [1, 'behzad', true, false] */
+    // console.log([...name.values()]) /* ['alireza', 2, 'ali', 'reza'] */
+128
+    const gameEvents = new Map([
+        [17, "Goal"],
+        [36, "Yellow card"],
+        [42, "Corner"],
+        [60, "Goal"],
+        [89, "Red card"],
+    ])
+    // // حذف مقادیر تکراری و قرار دادن آن به صورت آرایه
+    // const arr = [...new Set(gameEvents.values())]
+    // console.log(arr) /* ['Red card', 'Yellow card'] */
+    // // حذف رویداد دقیقه 89
+    // gameEvents.delete(89)
+    // console.log(gameEvents) /* Map(4) {17 => 'Goal', 36 => 'Yellow card', 42 => 'Corner', 60 => 'Goal'} */
+    // // هر رویداد به طور میانگین در چند دقیقه اتفاق میافتد
+    // console.log(90 / gameEvents.size) /* 22.5 each of minute */
+    // // مثال بالا فقط با این تفاوت که زمان کل بازی را به صورت پویا به دست آوریم
+    // const lastTime = [...gameEvents.keys()].pop()
+    // console.log(lastTime) /* آخرین مقدار 60 است زیرا 89 پاک شده است */
+    // console.log(lastTime / gameEvents.size) /* 15 each of minute */
+    // // مشخص کردن نیمه
+    // for (const [min, event] of gameEvents) 
+    //     min <= 45 
+    //     ? console.log(`[first half] => This event ${event} in ${min} minute...`) 
+    //     : console.log(`[second half] => This event ${event} in ${min} minute...`)
