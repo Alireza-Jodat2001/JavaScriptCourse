@@ -1170,3 +1170,38 @@
     // const repeatFunc = n => console.log(`${n} = ${"👊".repeat(n)}`)
     // repeatFunc(5) /* 5 = 👊👊👊👊👊 */
 132
+//     // تمرین برای تبدیل به کمل کیس
+//     const str = `  aLi_r
+//   rEza_La
+//  rEza_ba
+// rEza_Labb`
+    
+//     function handleStr(text) {
+//         const textArray = text.split("\n")
+        
+//         for (const [index, item] of textArray.entries()) {
+//             const [first, last] = item.toLowerCase().trim().split("_")
+//             const output = `${first}${last.replace(last[0], last[0].toUpperCase())}`.padEnd(15, " ")
+            
+//             console.log(`${output}${"✔".repeat(index + 1)}`)
+//         }
+//     }
+
+//     handleStr(str)
+133
+    // // تمرین تمام متد های رشته در یکجا
+    // const info = `_Ali_reza;fao79876768;txl1234455667;12:15+_Jonas_rezaei;hel79876768;fao1234455667;22:25`
+    
+    // for (const item of info.split("+")) {
+    //     const [first, from, to, hour] = item.split(";")
+    //     console.log(
+    //         `${first.startsWith("_Ali") ? "✔" : "❤"}${first.replaceAll(
+    //             "_",
+    //             " "
+    //         )} from ${from.slice(0, 3)} to ${to.slice(0, 3)} (${hour.replace(
+    //             ":",
+    //             "h"
+    //         )})`.padStart(45)
+    //     )
+    // }
+134
