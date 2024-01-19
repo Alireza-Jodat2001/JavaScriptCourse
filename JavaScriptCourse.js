@@ -1066,3 +1066,107 @@
     // console.log(new String(name)) /* شبیه به آبجکت است که کلید آن ایندکس و مقدار آن حرف ها است */
     // console.log(typeof new String(name)) /* تایپ آن آبجکت است */
     // console.log(typeof new String(name).slice(2)) /* وقتی آن را اسلایس میکنیم تایپ آن به رشته تغییر میکند */
+130
+    // const str = "abcd Efgh"
+    // console.log(str.toLowerCase()) /* abcd efgh */
+    // console.log("jonas".toUpperCase()) /* JONAS */
+
+    // // برای رفع مشکل کپیتال نوشتن
+    // const str1 = "JoNaS"
+    // const lower = str1.toLowerCase()
+    // console.log(lower[0].toUpperCase() + lower.slice(1)) /* Jonas */
+
+    // // برای مقایسه دو ایمیل یکسان
+    // const email = "alireza@gmail.com"
+    // const email2 = "    aliReza@Gmail.Com \n"
+    // console.log(email2.toLowerCase().trim()) /* alireza@gmail.com */
+
+    // // جایگزین کردن حروف در رشته ها
+    // const priceGB = "12,33$"
+    // console.log(priceGB.replace("$", "R")) /* 12,33R */
+    // console.log(priceGB.replace(",", ".").replace("$", "UE")) /* 12.33UE */
+
+    // // جایگزین کردن کلمه در رشته ها
+    // const str2 = "door is open is door"
+    // console.log(str2.replace("door", "dor")) /* فقط اولین کلمه مشابه تغییر میکند */
+    // console.log(str2.replaceAll("is", "iss").replaceAll("door", "book")) /* همه کلمه های مشابه تغییر میکند */ 
+    // console.log(str2.replaceAll("is", "iss").replaceAll("oor", "ook")) /* dook iss open iss dook */
+
+    // // روش دوم برای جایگزین کردن همه کلمه های مشابه
+    // const str3 = "door is open is door"
+    // console.log(str3.replace(/is/g, "the")) /* door the open the door */
+
+    // // متد های بولین
+    // const name1 = "alireza jodat"
+    // console.log(name1.includes("ali")) /* true */
+    // console.log(name1.includes("alireza")) /* true */
+    // console.log(name1.startsWith("alir")) /* true */
+    // console.log(name1.startsWith("jo")) /* false */
+
+    // name1.startsWith("alireza") && name1.endsWith("jodat") 
+    // ? console.log("is OK!") /* is OK! */
+    // : console.log("is'nt OK!") 
+
+    // name1.startsWith("alireza") && name1.endsWith("j") 
+    // ? console.log("is OK!") 
+    // : console.log("is'nt OK!") /* is'nt OK! */
+131
+    // // split method for string
+    // console.log("me+you+them".split("+")) /* ['me', 'you', 'them'] */
+    // console.log("me you them".split(" ")) /* ['me', 'you', 'them'] */
+
+    // // تخریب کردن رشته در آرایه
+    // const [fName, lName] = "alireza jodat".split(" ")
+    // console.log(fName, lName) /* alireza jodat */
+
+    // // join method for string
+    // // سر هم کردن آرایه به صورت یک جمله
+    // console.log(["ali", "reza", "jodat", 1380].join(" ")) /* ali reza jodat 1380 */
+
+    // // بزرگ کردن اول هر اسم
+    // function upperFunc(names) {
+    //     let newArr = []
+
+    //     for (const item of names.split(" ")) {
+    //         // روش اول
+    //         // newArr.push(item[0].toUpperCase() + item.slice(1))
+
+    //         // روش دوم
+    //         newArr.push(item.replace(item[0], item[0].toUpperCase()))   
+    //     }
+
+    //     console.log(newArr.join(" ")) /* Ali Reza Jodat */
+    // }
+
+    // upperFunc("ali reza jodat")
+
+    // // padding method in string
+    // console.log("ali".padStart(5, "_").padEnd(10, "_")) /* __ali_____ */
+
+    // // تمرین برای پنهان کردن شماره تماس
+    // function hideNum(number) {
+    //     const strNumber = String(number)
+    //     const firstPart = strNumber.slice(0, 4)
+    //     const secondPart = strNumber.slice(-4)
+    //     const starLength = strNumber.length - (firstPart.length + secondPart.length)
+    //     const padEnd1 = firstPart.length + 1
+    //     const padEnd2 = firstPart.length + 1 + starLength
+    //     const padEnd3 = firstPart.length + 1 + starLength + 1
+
+    //     console.log(
+    //         firstPart
+    //             .padEnd(padEnd1," ")
+    //             .padEnd(padEnd2, "*")
+    //             .padEnd(padEnd3, " ") + secondPart
+    //     )
+    // }
+
+    // hideNum("09359227339") /* 0935 *** 7339 */
+    // hideNum("09359200000") /* 0935 *** 0000 */
+
+    // // repeat method for string
+    // console.log("ali ".repeat(5)) /* ali ali ali ali ali */
+
+    // const repeatFunc = n => console.log(`${n} = ${"👊".repeat(n)}`)
+    // repeatFunc(5) /* 5 = 👊👊👊👊👊 */
+132
