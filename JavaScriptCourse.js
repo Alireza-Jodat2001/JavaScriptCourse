@@ -1337,83 +1337,137 @@
 // func.apply(newObj, arr1);
 // console.log(newObj.arr);
 142;
-const obj = {
-    name: "ali",
-    family: "jodat",
-    func(input) {
-        console.log(`${this.name} and ${this.family} and input: "${input}"`);
-    },
-};
+// const obj = {
+//     name: "ali",
+//     family: "jodat",
+//     func(input) {
+//         console.log(`${this.name} and ${this.family} and input: "${input}"`);
+//     },
+// };
 
-obj.func(4); /* ali and jodat and input: "4" */
+// obj.func(4); /* ali and jodat and input: "4" */
 
-const newObj = {
-    name: "mehran",
-    family: "gol",
-};
+// const newObj = {
+//     name: "mehran",
+//     family: "gol",
+// };
 
-const funcG = obj.func;
+// const funcG = obj.func;
 
-funcG.call(newObj, 5); /* mehran and gol and input: "5" */
+// funcG.call(newObj, 5); /* mehran and gol and input: "5" */
 
-// Bind method
-// روش اول
-const bindFunc = funcG.bind(newObj);
-bindFunc(77); /* mehran and gol and input: "77" */
+// // Bind method
+// // روش اول
+// const bindFunc = funcG.bind(newObj);
+// bindFunc(77); /* mehran and gol and input: "77" */
 
-// روش دوم
-const bindFunc1 = funcG.bind(newObj, "default value!!!");
-bindFunc1(); /* mehran and gol and input: "default value!!!" */
+// // روش دوم
+// const bindFunc1 = funcG.bind(newObj, "default value!!!");
+// bindFunc1(); /* mehran and gol and input: "default value!!!" */
 
-// بررسی کلمه کلیدی "این" در رویداد های جاواسکریپتی
-// 1
-function f1() {
-    console.log(this);
-}
-f1(); /* window object */
+// // بررسی کلمه کلیدی "این" در رویداد های جاواسکریپتی
+// // 1
+// function f1() {
+//     console.log(this);
+// }
+// f1(); /* window object */
 
-// 2
-const obj1 = {
-    name: "ali",
-    f2() {
-        console.log(this);
-    },
-};
-obj1.f2(); /* {name: 'ali', f2: ƒ} */
+// // 2
+// const obj1 = {
+//     name: "ali",
+//     f2() {
+//         console.log(this);
+//     },
+// };
+// obj1.f2(); /* {name: 'ali', f2: ƒ} */
 
-// در توابع رویداد کلمه کلیدی "این" مقدار عنصر دکمه را برمیگرداند
-// 3
-const obj2 = {
-    name: "ali",
-    f3() {
-        console.log(this);
-    },
-};
-document
-    .querySelector(".btn")
-    .addEventListener("click", obj2.f3); /* <button class="btn">142</button> */
+// // در توابع رویداد کلمه کلیدی "این" مقدار عنصر دکمه را برمیگرداند
+// // 3
+// const obj2 = {
+//     name: "ali",
+//     f3() {
+//         console.log(this);
+//     },
+// };
+// document
+//     .querySelector(".btn")
+//     .addEventListener("click", obj2.f3); /* <button class="btn">142</button> */
 
-// 4
-function f4() {
-    console.log(this);
-}
-document
-    .querySelector(".btn")
-    .addEventListener("click", f4); /* <button class="btn">142</button> */
+// // 4
+// function f4() {
+//     console.log(this);
+// }
+// document
+//     .querySelector(".btn")
+//     .addEventListener("click", f4); /* <button class="btn">142</button> */
 
-// 5
-// برای اینکه بخواهیم مقدار شیء را برایمان برگرداند مراحل زیر را می‌نویسیم
-const obj3 = {
-    name: "ali",
-    f5(input) {
-        console.log(this, input);
-    },
-};
-document
-    .querySelector(".btn")
-    .addEventListener(
-        "click",
-        obj3.f5.bind(obj3, 2)
-    ); /* {name: 'ali', f5: ƒ} 2 */
+// // 5
+// // برای اینکه بخواهیم مقدار شیء را برایمان برگرداند مراحل زیر را می‌نویسیم
+// const obj3 = {
+//     name: "ali",
+//     f5(input) {
+//         console.log(this, input);
+//     },
+// };
+// document
+//     .querySelector(".btn142")
+//     .addEventListener(
+//         "click",
+//         obj3.f5.bind(obj3, 2)
+//     ); /* {name: 'ali', f5: ƒ} 2 */
 
-// prtial application
+// // prtial application
+// // در این روش نسخه ثابت از یک تابع ذخیره میشود و سپس تابع را با مقادیر مختلف صدا می‌زنیم
+// const calcAge = (now, age) => console.log(now - age);
+// const calcAgeBind = calcAge.bind(null, 2024);
+// calcAgeBind(2001); /* 23 */
+// calcAgeBind(2005); /* 19 */
+
+// // استفاده از "پارشیال" برای توابع تو در تو
+// // روش اول
+// function add(num1) {
+//     return function (num2) {
+//         return num1 + num2;
+//     };
+// }
+// const addConstant = add(12);
+// console.log(addConstant(12)); /* 24 */
+
+// // روش خلاصه تر
+// // روش دوم
+// const add2 = (num1) => (num2) => num1 + num2;
+// const addC = add2(30);
+// console.log(addC(12)); /* 42 */
+143;
+// const obj = {
+//     q: "wich one?",
+//     o: ["0: Java", "1: Python", "2: C++"],
+//     a: new Array(3).fill(0),
+//     f() {
+//         // get
+//         const r = Number(prompt(`${this.q}\n${this.o.join("\n")}`));
+//         // check
+//         typeof r === "number" && (r ?? false) && r < this.o.length && r >= 0
+//             ? this.a[r]++
+//             : console.log("Error!!!");
+//         // condition
+//         const condition =
+//             typeof r === "number" &&
+//             (r ?? false) &&
+//             r < this.o.length &&
+//             r >= 0;
+//         condition && console.log(this.a);
+//     },
+// };
+// // we can use call or bind method
+// document.querySelector(".btn143").addEventListener("click", obj.f.call(obj));
+144;
+// توابعی که فقط یکبار خوانده میشوند
+// معمولا از این توابع برای جلوگیری از گلوبال شدن متغیر ها استفاده میشود
+// (function () {
+//     console.log("ali");
+// })();
+
+// // روشی برای توابع یک خطی
+// (() => console.log("arrow"))();
+145;
