@@ -1337,3 +1337,83 @@
 // func.apply(newObj, arr1);
 // console.log(newObj.arr);
 142;
+const obj = {
+    name: "ali",
+    family: "jodat",
+    func(input) {
+        console.log(`${this.name} and ${this.family} and input: "${input}"`);
+    },
+};
+
+obj.func(4); /* ali and jodat and input: "4" */
+
+const newObj = {
+    name: "mehran",
+    family: "gol",
+};
+
+const funcG = obj.func;
+
+funcG.call(newObj, 5); /* mehran and gol and input: "5" */
+
+// Bind method
+// روش اول
+const bindFunc = funcG.bind(newObj);
+bindFunc(77); /* mehran and gol and input: "77" */
+
+// روش دوم
+const bindFunc1 = funcG.bind(newObj, "default value!!!");
+bindFunc1(); /* mehran and gol and input: "default value!!!" */
+
+// بررسی کلمه کلیدی "این" در رویداد های جاواسکریپتی
+// 1
+function f1() {
+    console.log(this);
+}
+f1(); /* window object */
+
+// 2
+const obj1 = {
+    name: "ali",
+    f2() {
+        console.log(this);
+    },
+};
+obj1.f2(); /* {name: 'ali', f2: ƒ} */
+
+// در توابع رویداد کلمه کلیدی "این" مقدار عنصر دکمه را برمیگرداند
+// 3
+const obj2 = {
+    name: "ali",
+    f3() {
+        console.log(this);
+    },
+};
+document
+    .querySelector(".btn")
+    .addEventListener("click", obj2.f3); /* <button class="btn">142</button> */
+
+// 4
+function f4() {
+    console.log(this);
+}
+document
+    .querySelector(".btn")
+    .addEventListener("click", f4); /* <button class="btn">142</button> */
+
+// 5
+// برای اینکه بخواهیم مقدار شیء را برایمان برگرداند مراحل زیر را می‌نویسیم
+const obj3 = {
+    name: "ali",
+    f5(input) {
+        console.log(this, input);
+    },
+};
+document
+    .querySelector(".btn")
+    .addEventListener(
+        "click",
+        obj3.f5.bind(obj3, 2)
+    ); /* {name: 'ali', f5: ƒ} 2 */
+
+// prtial application
