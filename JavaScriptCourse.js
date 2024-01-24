@@ -1471,3 +1471,165 @@
 // // روشی برای توابع یک خطی
 // (() => console.log("arrow"))();
 145;
+// // Closures function
+// // روش اول
+// function countFunc() {
+//     let counter = 0;
+//     return function () {
+//         counter++;
+//         console.log(counter);
+//     };
+// }
+// const countFuncNew =
+//     countFunc(); /* با این عمل تمام بخش های بغیر از بخش "بازگردانی" اجراء می‌شود */
+// countFuncNew(); /* 1 */
+// countFuncNew(); /* 2 */
+// countFuncNew(); /* 3 */
+// console.dir(
+//     countFuncNew
+// ); /* با رفتن به اسکپ و سپس کلاژرز میتوانیم به آخرین مقدار شمارنده خود دسترسی داشته باشیم */
+
+// // روش دوم برای توابع تک خطی
+// function arrowF() {
+//     let count = 0;
+//     return () => console.log(++count);
+// }
+// const newA = arrowF();
+// newA(); /* 1 */
+// newA(); /* 2 */
+// newA(); /* 3 */
+146;
+// // some of example for closure function
+// // 1
+// let func1;
+// function func2() {
+//     console.log("first");
+//     func1 = () => console.log("second");
+// }
+// func2(); /* first */
+// func1(); /* second */
+
+// // 2
+// function timer(a, wait) {
+//     console.log("first");
+//     setTimeout(() => {
+//         console.log(a);
+//     }, wait * 1000);
+//     console.log("second");
+// }
+// timer("ali", 3); /* in order => 1. first 2. second 3. "ali"*/
+150;
+// // Array method
+// // slice method in Array
+// // این حالت آرایه اصلی را تغییر نمی‌دهد
+// const arr = ["a", "b", "c", "d", "e"];
+// console.log(arr.slice(-2)); /* ['d', 'e'] */
+// console.log(arr.slice(0, -2)); /* ['a', 'b', 'c'] */
+
+// // splice method in Array
+// // این حالت کاملا مشابه اسلایس است اما آرایه اصلی را تغییر می‌دهد
+// // یکی از کاربرد‌های آن حذف کردن عناصر مورد نظر از آرایه اصلی می‌تواند باشد
+// const arr1 = ["a", "b", "c", "d", "e"];
+// console.log(arr1.splice(0, 3)); /* ['a', 'b', 'c'] */
+// console.log(arr1); /* ['d', 'e'] */
+// console.log(arr1.splice(-2)); /* ['d', 'e'] */
+// console.log(arr1); /* [] => آرایه خالی شده */
+// console.log(arr1.splice(0, -2)); /* [] => چون دیگه آرایه خالی است */
+
+// // reverse method in Array
+// // این روش آرایه اصلی را تغییر می‌دهد
+// const arr2 = ["a", "b", "c", "d", "e"];
+// console.log(arr2.reverse()); /* ['e', 'd', 'c', 'b', 'a'] */
+// console.log(arr2); /* ['e', 'd', 'c', 'b', 'a'] */
+
+// // concat method in Array
+// // روش اول برای کانکت
+// const arr3 = ["a", "b", "c", "d", "e"];
+// const arr4 = ["f", "g", "h", "i", "j"];
+// console.log(
+//     arr3.concat(arr4)
+// ); /* ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'] */
+// // "..." روش خیلی باحال برای کاکنت کردن از طریق اسپرید
+// console.log([...arr3, ...arr4]); /* ['e', 'd', 'c', 'b', 'a'] */
+
+// // join method in Array
+// const arr5 = ["a", "b", "c", "d", "e"];
+// const arr6 = ["f", "g", "h", "i", "j"];
+// console.log(
+//     arr5.concat(arr6).join(" - ")
+// ); /* a - b - c - d - e - f - g - h - i - j */
+
+// // (push, shift, unshift, pop, indexOf, includes) متد‌هایی که از قبل یاد گرفتیم
+151;
+// // At method in Array
+// // همانند روش سنتی براکت عمل می‌کند اما در آن دستیابی به آخرین خانه از آرایه راحت تر است
+// const arr = ["f", "g", "h", "i", "j"];
+// console.log(arr.at(0)); /* f */
+// // مقایسه دستیابی به آخرین خانه از آرایه در سه روش متفاوت
+// console.log(arr[arr.length - 1]); /* j */
+// console.log(arr.slice(-1)[0]); /* j */
+// console.log(
+//     arr.at(-1)
+// ); /* j => بهترین روش برای دستیابی به آخرین خانه از آرایه */
+152;
+// // forEach loop in javaScript
+// // می‌رویم forEach آشنا می‌شویم و سپس به سراغ حلقه Math.abs می‌زنیم و همچنین با متد  forOf ابتدا یک مثال از حلقه
+// const numbers = [100, -20, 15, -336];
+// for (const [index, item] of numbers.entries())
+//     item > 0
+//         ? console.log(`tarakonesh ${index}: ${item} variz shodeh...`)
+//         : console.log(
+//               `tarakonesh ${index}: ${Math.abs(item)} bardasht shodeh...`
+//           ); /* همانند قدرمطلق عمل می‌کند Math.abs(item) متد */
+
+// // forEach مثال بال با استفاده از
+// console.log("---- forEach loop ----");
+// const numbers2 = [100, -20, 15, -336];
+// numbers2.forEach((number, index, array) => {
+//     console.log(
+//         array
+//     ); /* [100, -20, 15, -336] => با استفاده از پارامتر سوم میتوانیم به خود آرایه دسترسی پیدا کنیم */
+//     number > 0
+//         ? console.log(`tarakonesh ${index}: ${number} variz shodeh...`)
+//         : console.log(
+//               `tarakonesh ${index}: ${Math.abs(number)} bardasht shodeh...`
+//           );
+// });
+
+// // forEach , forOf تفاوت‌های اساسی میان
+// // استفاده کنیم اما در دیگری می‌شود break , continue نمی‌توانیم از forEach در
+// // نمی‌توان چیزی را "بازگردانی" کرد در دیگری را نمی‌دانم forEach در
+// // میتوان از کال‌بک استفاده کرد اما در دیگری نمیشود forEach در
+153;
+// // map در forEach نحوه استفاده از
+// const map = new Map([
+//     [true, document.querySelector(".btn142")],
+//     ["ali", 1],
+// ]);
+// map.forEach(
+//     (value, key, map) =>
+//         console.log(
+//             `value: ${value}, key: ${key}, map: ${map}`
+//         ) /* value: [object HTMLButtonElement], key: true, map: [object Map] => خیلی دقیق نشون نمیده */
+// );
+
+// // نمونه مثال از خودم
+// const map1 = new Map([
+//     [true, document.querySelector(".btn142")],
+//     ["ali", 1],
+// ]);
+// [...map1.entries()].forEach(
+//     ([index, item], indexL, array) =>
+//         console.log(index, item, indexL, [
+//             ...array,
+//         ]) /* step1 => true <button class=​"btn142">​142​</button>​ 0  [Array(2), Array(2)] دقیق تر نشون میده */
+// );
+
+// // set در forEach نحوه استفاده از
+// // منحصر به فرد است set :یادآوری
+// // از _ برای پارامتر های بدرد نخور استفاده میکنیم
+// const set = new Set(["ali", "bezi", "ali", "reza", "bezi"]);
+// set.forEach((value, _, set) =>
+//     console.log(`${value}: ${value}`)
+// ); /* step1: ali: ali */
+154;
