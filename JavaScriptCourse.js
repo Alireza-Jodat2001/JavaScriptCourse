@@ -1356,6 +1356,24 @@
 
 // funcG.call(newObj, 5); /* mehran and gol and input: "5" */
 
+// روش خاص برای کال
+// (() => {
+//     const obj = {
+//         ali: {
+//             name: "ali1",
+//             func() {
+//                 console.log(this.name);
+//             },
+//         },
+//         reza: { name: "reza1" },
+//         bezi: { name: "bezi1" },
+//     };
+//     const newFunc = obj.ali.func;
+//     Object.keys(obj).forEach((item) => {
+//         newFunc.call(obj[item]);
+//     });
+// })();
+
 // // Bind method
 // // روش اول
 // const bindFunc = funcG.bind(newObj);
@@ -1632,4 +1650,51 @@
 // set.forEach((value, _, set) =>
 //     console.log(`${value}: ${value}`)
 // ); /* step1: ali: ali */
-154;
+155;
+// // Bankist پروژه
+// (() => {
+//     const obj = {
+//         movments: [12, -10, 300, -20],
+//     };
+//     document.body.innerHTML = ""; /* برای خالی کردن یک کانتینر گزینه خوبی است */
+
+//     return () => {
+//         obj.movments.forEach((item, index) => {
+//             const { type, color } =
+//                 item > 0
+//                     ? { type: "Variz", color: "green" }
+//                     : { type: "Bardasht", color: "red" };
+//             const cardMov = `
+//             <div style="background: ${color};" class="${type}">${index}.${type}: ${item}</div>
+//         `;
+//             document.body.insertAdjacentHTML("beforeend", cardMov);
+//         });
+//     };
+// })()();
+156;
+// // تمرین برای آرایه میخواهیم سن های زیر ده سال را جدا کرده و با هم در یک آرایه ای دیگر وصل کنیم
+// (() => {
+//     const obj = {
+//         digikala: {
+//             age: [12, 2, 45],
+//             ageChecked: [],
+//             check() {
+//                 this.age.forEach(
+//                     (item) => item < 10 && this.ageChecked.push(item)
+//                 );
+//             },
+//         },
+//         torob: { age: [1, 30, 4], ageChecked: [] },
+//     };
+
+//     const ageFunc = obj.digikala.check;
+//     const newAgeCheck = [];
+
+//     Object.keys(obj).forEach((item) => {
+//         ageFunc.call(obj[item]);
+//         newAgeCheck.push(...obj[item].ageChecked);
+//     });
+
+//     console.log(newAgeCheck); /* [2, 1, 4] */
+// })();
+157;
