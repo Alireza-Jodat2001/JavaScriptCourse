@@ -1698,3 +1698,65 @@
 //     console.log(newAgeCheck); /* [2, 1, 4] */
 // })();
 157;
+// // map notation in array
+// // برای چرخیدن روی عناصر آرایه map روش
+// // این امکان پذیر نیست forEach این روش در پایان یک آرایه جدید ایجاد می‌کند که در
+// // روش معمولی
+// (() => {
+//     const arr = [20, 30, 12, 34];
+//     const newArr = arr.map((price, index, arr) => {
+//         console.log(arr); /* آرایه اصلی را به ما می‌دهد */
+//         const rial = 50000;
+//         return (
+//             price * rial
+//         ); /* شده از کال‌بک در آرایه جدیدمان ذخیره خواهد شد return تنها بخش */
+//     });
+//     console.log(newArr); /* [1000000, 1500000, 600000, 1700000] */
+// })();
+
+// // روش تک خطی
+// (() => {
+//     const arr = [20, -30, 12, -34];
+//     const newArr = arr.map(
+//         (price) =>
+//             `movment is ${price < 0 ? "bardash" : "variz"} = ${
+//                 price > 0 ? price : Math.abs(price)
+//             }`
+//     ); /* شده از کال‌بک در آرایه جدیدمان ذخیره خواهد شد return تنها بخش */
+//     console.log(
+//         newArr
+//     ); /* ['movment is variz = 20', 'movment is bardash = 30', 'movment is variz = 12', 'movment is bardash = 34'] */
+// })();
+159;
+// // make up username field in Bankist project
+// (() => {
+//     const obj = {
+//         account1: {
+//             owner: "Alireza Jodat",
+//             makeUserName() {
+//                 this.username = this.owner
+//                     .toLowerCase()
+//                     .split(" ")
+//                     .map(word => word[0])
+//                     .join("");
+//             },
+//         },
+//         account2: {
+//             owner: "Behzad Jannesar",
+//         },
+//         account3: {
+//             owner: "Mehran Gol",
+//         },
+//         account4: {
+//             owner: "Mohsen Jodat",
+//         },
+//     };
+
+//     const generalFunc = obj.account1.makeUserName;
+//     Object.keys(obj).forEach(account => {
+//         generalFunc.call(obj[account]);
+//     });
+
+//     console.log(obj); // step3 => account3: {owner: 'Mehran Gol', username: 'mg'}
+// })();
+160;
