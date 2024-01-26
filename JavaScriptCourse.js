@@ -1833,4 +1833,153 @@
 //     console.log(Math.abs(bardasht)); // [-9250] => 9250
 //     console.log(variz + bardasht); // 13000
 // })();
-164;
+165;
+// // find method in array
+// // این متد فقط اولین مقداری که شرط ما را برآورده کند را برمی‌گرداند
+// // این متد کال‌بک را می‌پذیرد
+// // این متد شرط را هم می‌پزیرد
+// (() => {
+//     const arr = [20, 45, -65, 300, -120, 80];
+//     const first = arr.find(item => item < 0);
+//     console.log(first); // -65
+// })();
+
+// // یکی از کاربرد‌های خوب در این روش سرچ کردن آبجکت منحصر به فرد است
+// (() => {
+//     const arr = [
+//         {
+//             owner: "Alireza Jodat",
+//             open: 22,
+//         },
+//         {
+//             owner: "Behzad Jannesar",
+//             open: 12,
+//         },
+//         {
+//             owner: "Mehran Gol",
+//             open: 13,
+//         },
+//         {
+//             owner: "Mohsen Jodat",
+//             open: 11,
+//         },
+//     ];
+
+//     console.log(arr.find(account => account.owner === "Mehran Gol")); //{owner: 'Mehran Gol', open: 13}
+// })();
+166;
+// // find account and show "login" in console
+// (() => {
+//     const arr = [
+//         {
+//             owner: "Alireza Jodat",
+//             username: "aj",
+//             pin: 1111,
+//             open: 22,
+//         },
+//         {
+//             owner: "Behzad Jannesar",
+//             username: "bj",
+//             pin: 2222,
+//             open: 12,
+//         },
+//         {
+//             owner: "Mehran Gol",
+//             username: "mg",
+//             pin: 3333,
+//             open: 13,
+//         },
+//         {
+//             owner: "Mohsen Jodat",
+//             username: "mj",
+//             pin: 4444,
+//             open: 11,
+//         },
+//     ];
+//     const btn = document.querySelector(".btn166");
+
+//     btn.addEventListener("click", e => {
+//         // initialize
+//         const userInput = document.querySelector(".userInput");
+//         const pinInput = document.querySelector(".pinInput");
+
+//         // btn submit Prevent Default
+//         e.preventDefault();
+
+//         // find account
+//         const findedAccount = arr.find(
+//             account => account.username === userInput.value
+//         );
+
+//         // check pin
+//         findedAccount?.pin === Number(pinInput.value)
+//             ? console.log(`Welcome back, ${findedAccount.owner.split(" ")[0]}`)
+//             : console.log("in correct username or pin");
+
+//         // second way
+//         arr.find(account => account.username === userInput.value)?.pin ===
+//         Number(pinInput.value)
+//             ? console.log(`Welcome back, ${findedAccount.owner.split(" ")[0]}`)
+//             : console.log("in correct username or pin");
+
+//         // blur and clear inputs
+//         userInput.value = pinInput.value = "";
+//         userInput.blur();
+//         pinInput.blur();
+//     });
+// })();
+167;
+// // transfer money
+// (() => {
+//     // initialize
+//     const arr = [
+//         {
+//             owner: "Alireza Jodat",
+//             username: "aj",
+//             movments: [34, -45],
+//         },
+//         {
+//             owner: "Behzad Jannesar",
+//             username: "bj",
+//             movments: [-1, 7],
+//         },
+//         {
+//             owner: "Mehran Gol",
+//             username: "mg",
+//             movments: [9, -76],
+//         },
+//         {
+//             owner: "Mohsen Jodat",
+//             username: "mj",
+//             movments: [-67, -7],
+//         },
+//     ];
+//     const btn = document.querySelector(".btn167");
+
+//     // transfer money event
+//     btn.addEventListener("click", e => {
+//         // initializa
+//         const toInput = document.querySelector(".toInput");
+//         const amountInput = document.querySelector(".amountInput");
+
+//         // btn submit prevent default
+//         e.preventDefault();
+
+//         // find account
+//         const findedAccount = arr.find(
+//             account => account.username === toInput.value
+//         );
+
+//         // transfer amount
+//         findedAccount?.movments.push(Number(amountInput.value));
+
+//         // show in console
+//         console.log(findedAccount); // movments: (3) [-67, -7, new Amount]
+
+//         // blur and clear inputs
+//         toInput.value = amountInput.value = "";
+//         toInput.blur();
+//         amountInput.blur();
+//     });
+// })();
+168;
