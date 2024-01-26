@@ -1760,3 +1760,77 @@
 //     console.log(obj); // step3 => account3: {owner: 'Mehran Gol', username: 'mg'}
 // })();
 160;
+// // filter notation for array
+// // این روش همانند مپ برای ما آرایه جدید می‌سازد
+// (() => {
+//     const arr = [21, -43, 87, -99];
+//     const newArr = arr.filter((mov, i, arr) => mov < 0);
+//     console.log(newArr);
+// })();
+
+// // یکی از بهترین روش ها برای سرچ کردن در آرایه ها
+// // بر نمی‌گرداند undefined زیرا برخلاف مپ حالت های نادرست را
+// (() => {
+//     const arr = ["ali reza", "kohfh lkhhf", "lkhgf vbgv", "ygjfb klng"];
+//     const newArr = arr.filter(
+//         (mov, i, arr) => mov.includes("vbgv") || mov.toLowerCase().includes("vbgv")
+//     );
+//     console.log(newArr);
+// })();
+161;
+// // reduce notation in array
+// // این روش هم برای ما یک مقدار واحد را برمی‌گرداند
+// // در این روش یک انباشتگر وجود دارد که مقدار در آن ذخیره خواهد شد
+// // در این روش می‌توان مقدار پیش فرض انباشتگر را تعین کرد
+// // مثالی برای جمع کل
+// (() => {
+//     const arr = [12, 23, 45];
+//     const result = arr.reduce((acc, curr, i, arr) => acc + curr, 10);
+//     console.log(result); // در اینجا مقدار پیش فرض برابر با ده است <= 90
+// })();
+
+// // max مثالی برای به دست آوردن
+// (() => {
+//     const arr = [-1, -12, -23, -45, -85];
+//     const result = arr.reduce(
+//         (acc, curr, i, arr) => (acc < curr ? curr : acc),
+//         arr[0]
+//     );
+//     console.log(result); // -1 => به دلیل اینکه اشتباه مقایسه نشه باید از اولین خانه آرایه کمک بگیریم به جای صفر
+// })();
+
+// // string مثالی برای جمع
+// (() => {
+//     const arr = ["ali", "reza", "jodat", "1380"];
+//     const result = arr.reduce((acc, cur) => acc + " " + cur, "");
+//     console.log(result.trim()); // "ali reza jodat 1380"
+// })();
+162;
+// // reduce, map, filter مثال کلی برای جمع بندی
+// (() => {
+//     const dogAges = [1, 6, 2, 4, 5];
+//     const humanAges = dogAges.map(age => (age <= 2 ? age * 2 : 16 + age * 4)); // [2, 40, 4, 32, 36]
+//     const filtered = humanAges.filter(humanAge => humanAge >= 18); // [40, 32, 36]
+//     const average =
+//         filtered.reduce((acc, cur, i, arr) => acc + cur, 0) / filtered.length;
+//     console.log(average); // 36
+// })();
+163;
+// // reduce, map, filter مثالی زنجیر وار از سه روش
+// (() => {
+//     const arr = [20, 45, -65, 300, -120, 80];
+//     const rial = arr.map(price => price * 50); // [1000, 2250, -3250, 15000, -6000, 4000]
+
+//     const variz = rial
+//         .filter(price => price > 0)
+//         .reduce((acc, price) => acc + price, 0);
+
+//     const bardasht = rial
+//         .filter(price => price < 0)
+//         .reduce((acc, price) => acc + price, 0);
+
+//     console.log(variz); // 22250
+//     console.log(Math.abs(bardasht)); // [-9250] => 9250
+//     console.log(variz + bardasht); // 13000
+// })();
+164;
