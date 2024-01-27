@@ -1983,3 +1983,424 @@
 //     });
 // })();
 168;
+// (() => {
+//     // initialize
+//     const arr = [
+//         {
+//             owner: "Alireza Jodat",
+//             username: "aj",
+//             movments: [34, -45],
+//         },
+//         {
+//             owner: "Behzad Jannesar",
+//             username: "bj",
+//             movments: [-1, 7],
+//         },
+//         {
+//             owner: "Mehran Gol",
+//             username: "mg",
+//             movments: [9, -76],
+//         },
+//         {
+//             owner: "Mohsen Jodat",
+//             username: "mj",
+//             movments: [-67, -7],
+//         },
+//     ];
+
+//     // find index account
+//     const indexAccount = arr.findIndex(account => account.username === "mj");
+
+//     // remove account
+//     console.log(arr.splice(indexAccount, 1)); // {owner: 'Mohsen Jodat', username: 'mj', movments: Array(2)} به اندازه یک عنصر حذف می‌کنیم
+
+//     // show original array
+//     console.log(arr); // آیتم دارای ایندکس سوم حذف شده است
+// })();
+169;
+// // some method
+// // این متد اگر شرط درست باشد درست برمی‌گرداند و به تعداد درست بودن توجهی ندارد
+// // فرق دارد includes این روش کمی با متد
+// // فقط از روش برابری استفاده می‌کند includes متد
+// // شرط ها را نیز می‌پذیرد some اما متد
+// (() => {
+//     // initialize
+//     const arr = [2, 32, 4354, 5453, 34];
+
+//     // some method
+//     console.log(arr.some(item => item > 4000)); // true => 5453
+
+//     // includes method
+//     console.log(arr.includes(4354)); // true
+// })();
+
+// // Every method
+// // این روش تنها در صورتی درست است که تمامی عناصر آرایه شرط را برآورده سازند
+// // این روش هم همانند سایر روش ها کال‌بک دریافت می‌کند
+// // مثال یک
+// (() => {
+//     // initialize
+//     const arr = [2, 32, 4354, 5453, 34];
+
+//     // Every method
+//     console.log(arr.every(item => item > 0)); // true
+// })();
+
+// // مثال دو
+// (() => {
+//     // initialize
+//     const arr = [2, 32, 4354, 5453, 34];
+
+//     // Every method
+//     console.log(arr.every(item => item > 32)); // false
+// })();
+
+// // کال‌بک جداگانه روش‌هایی که شرط را می‌پذیرند
+// (() => {
+//     // initialize
+//     const arr = [2, 32, 4354, 5453, 34];
+//     const movments = mov => mov > 32;
+
+//     // call
+//     console.log(arr.some(movments));
+//     console.log(arr.every(movments));
+//     console.log(arr.filter(movments));
+// })();
+170;
+// // flat and flat map method
+// // هیچ کال‌بکی را نمی‌پذیرد flat متد
+// // این متد برای زمانی‌ست که آرایه های تو در تو داریم و میخواهیم آنها را یکدست کنیم
+// // مثال یک
+// (() => {
+//     // initialize
+//     const arr = [[12], 22, [7, 0]];
+
+//     // flat method
+//     console.log(arr.flat()); // [12, 22, 7, 0]
+// })();
+
+// // مثال دو
+// // همچنین می‌توان برای این متد عمق هم در نظر گرفت
+// (() => {
+//     // initialize
+//     const arr = [[12, [23, 78]], 22, [7, 0]];
+
+//     // flat method
+//     console.log(arr.flat(1)); // [12, Array(2), 22, 7, 0]
+//     console.log(arr.flat(2)); // [12, 23, 78, 22, 7, 0]
+// })();
+
+// // مثال کاربردی برای این متد جمع تمامی گردش حساب ها
+// (() => {
+//     // initialize
+//     const arr = [
+//         {
+//             movments: [34, -45],
+//         },
+//         {
+//             movments: [-1, 7],
+//         },
+//         {
+//             movments: [9, -76],
+//         },
+//         {
+//             movments: [-67, -7],
+//         },
+//     ];
+
+//     // add movments
+//     console.log(
+//         arr
+//             .map(acc => acc.movments)
+//             .flat()
+//             .reduce((acc, curr) => acc + curr, 0)
+//     ); // -146
+// })();
+
+// // flat map method
+// // این روش ترکیبی از روش مپ و فلت است
+// // اما تنها در صورتی کار می‌کند که قرار باشد یک لایه از عمق یک آرایه را صاف کند و سپس روی آن بچرخد
+// (() => {
+//     // initialize
+//     const arr = [
+//         {
+//             movments: [34, -45],
+//         },
+//         {
+//             movments: [-1, 7],
+//         },
+//         {
+//             movments: [9, -76],
+//         },
+//         {
+//             movments: [-67, -7],
+//         },
+//     ];
+
+//     // add movments and show result in console
+//     const flatArray = arr.flatMap(acc => acc.movments);
+//     console.log(flatArray); // [34, -45, -1, 7, 9, -76, -67, -7]
+//     console.log(flatArray.reduce((acc, curr) => acc + curr, 0)); // -146
+
+//     // shortand way
+//     console.log(
+//         arr.flatMap(acc => acc.movments).reduce((acc, curr) => acc + curr, 0)
+//     ); // -146
+// })();
+171;
+// // sort method in array
+// // این روش برای مرتب سازی عناصر آرایه به کار می‌رود
+// // اما باید حواسمان باشد که این متد آرایه اصلی را تغییر می‌دهد
+// // مثالی برای مرتب سازی رشته‌ها
+// (() => {
+//     // initialize
+//     const arr = ["ali", "mohsen", "mehran", "bezi"];
+
+//     // sort method
+//     console.log(arr.sort()); // ['ali', 'bezi', 'mehran', 'mohsen'] => A,B,C,D,...
+//     console.log(arr); // ['ali', 'bezi', 'mehran', 'mohsen'] => مقایسه با آرایه اصلی
+// })();
+
+// // مثالی برای مرتب سازی صعودی اعداد
+// // در این روش اگر عنصر فعلی از بعدی بزرگتر باشد باید یک برگردد و یک به معنای انجام تغییر است
+// (() => {
+//     // initialize
+//     const arr = [12, 2, -20, 87, 12, -1, 33];
+
+//     // sort method
+//     console.log(arr.sort((current, next) => (current > next ? 1 : -1))); // [-20, -1, 2, 12, 12, 33, 87]
+//     console.log(arr); // [-20, -1, 2, 12, 12, 33, 87] => مقایسه با آرایه اصلی
+
+//     // shortand way
+//     // initialize
+//     const arr2 = [12, 2, -20, 87, 12, -1, 33];
+
+//     // sort method
+//     console.log(arr2.sort((current, next) => current - next)); // [-20, -1, 2, 12, 12, 33, 87]
+//     console.log(arr2); // [-20, -1, 2, 12, 12, 33, 87] => مقایسه با آرایه اصلی
+// })();
+
+// // مثالی برای مرتب سازی نزولی اعداد
+// // در این روش اگر عنصر فعلی از عنصر بعدی کوچکتر باشد باید یک برگردد که یک به معنای ایجاد تغییر است
+// (() => {
+//     // initialize
+//     const arr = [12, 2, -20, 87, 12, -1, 33];
+
+//     // sort method
+//     console.log(arr.sort((current, next) => (current < next ? 1 : -1))); // [87, 33, 12, 12, 2, -1, -20]
+//     console.log(arr); // [87, 33, 12, 12, 2, -1, -20] => مقایسه با آرایه اصلی
+
+//     // shortand way
+//     // initialize
+//     const arr2 = [12, 2, -20, 87, 12, -1, 33];
+
+//     // sort method
+//     console.log(arr2.sort((current, next) => next - current)); // [87, 33, 12, 12, 2, -1, -20]
+//     console.log(arr2); // [87, 33, 12, 12, 2, -1, -20] => مقایسه با آرایه اصلی
+// })();
+
+// // مثالی برای بهم ریختن ترتیب عناصر آرایه
+// (() => {
+//     // initialize
+//     const arr = [2, 12, 33, 87];
+
+//     // sort method
+//     console.log(arr.sort(() => Math.random() - Math.random())); // [87, 2, 12, 33]
+//     console.log(arr); // [87, 2, 12, 33] => مقایسه با آرایه اصلی
+// })();
+
+// // مثالی برای مرتب سازی و برگرداندن به حالت اصلی
+// // فقط باید حواسمان باشد که از آرایه اصلی کپی بگیریم
+// (() => {
+//     // initialize
+//     const arr = [0, -1, 4, 6, 2, -2, 30];
+//     const btn = document.querySelector(".btn171");
+//     let sort = false;
+
+//     // event sort btn
+//     btn.addEventListener("click", () => {
+//         // show result
+//         console.log(
+//             !sort
+//                 ? `${arr
+//                       .slice()
+//                       .sort((current, next) => next - current)} : Original`
+//                 : `${arr} : Sorted`
+//         );
+
+//         // replace new sort
+//         sort = !sort;
+//     });
+// })();
+172;
+// // fill method
+// // روشی برای ایجاد آرایه ها به صورت برنامه‌ای
+// // با این متد میتوان خانه های خالی آرایه را پر کرد
+// // این روش آرایه اصلی را نیز تغییر میدهد
+// // این روش آرایه‌های از قبل پر شده را نیز میتواند تغییر دهد
+// (() => {
+//     // old way
+//     console.log([1, 2]); // [1, 2]
+//     console.log(new Array(1, 2)); // [1, 2]
+
+//     // new way
+//     const arr = new Array(4);
+//     console.log(arr); // [empty × 4] => نشان دهنده چهار عنصر خالی است
+//     arr.fill("ali", 3);
+//     console.log(arr); // [empty × 3, 'ali']
+//     arr.fill("reza", 0, 1);
+//     console.log(arr); // ['reza', empty × 2, 'ali']
+//     arr.fill("bezi", 0);
+//     console.log(arr); // ['bezi', 'bezi', 'bezi', 'bezi']
+
+//     // array pre-loaded
+//     const arr2 = [1, 2, 3, 4, 5, 6];
+//     console.log(arr2.fill("ali", 0, 1)); // ['ali', 2, 3, 4, 5, 6]
+// })();
+
+// // from method in array
+// // در این روش هم میتوان آرایه ایجاد و سپس آن پر کرد
+// // در این روش میتوان تعداد خانه‌های آرایه و همچنین مقداری که قرار است در آن قرار گیرد را مشخص کرد
+// (() => {
+//     console.log(Array.from({ length: 4 }, (_, index) => 1)); // [1, 1, 1, 1]
+//     console.log(Array.from({ length: 4 }, (_, index) => ++index)); // [1, 2, 3, 4]
+// })();
+
+// // مثال برای قرار دادن مقدار صد تاس تصادفی در یک آرایه
+// (() => {
+//     console.log(
+//         Array.from({ length: 100 }, () => Math.trunc(Math.random() * 6 + 1))
+//     ); // [3, 5, 6, 5, 4,....]
+// })();
+
+// // from به یک آرایه معمولی با استفاده از متد node list مثالی برای تبدیل
+// // زد map نمی‌توان node list زیرا در حالت اصلی روی
+// // دارد می‌توان مستقیما روی عناصر تغییرات را اعمال کرد from و از طریق کال‌بکی که متد
+// (() => {
+//     console.log(
+//         Array.from(
+//             document.querySelectorAll(".span__172"),
+//             (el, index) => (el.textContent = `span ${index}`)
+//         )
+//     );
+// })();
+
+// // به آرایه معمولی node list استفاده از اسپیرید برای تبدیل
+// (() => {
+//     const nodeArray = [...document.querySelectorAll(".span__172")];
+//     console.log(nodeArray); // [span.span__172, span.span__172]
+
+//     // shortand way
+//     console.log([...document.querySelectorAll(".span__172")]); // [span.span__172, span.span__172]
+// })();
+174;
+// // جمع بندی برای تمامی متد‌های آرایه
+// (() => {
+//     const array = [
+//         {
+//             owner: "Alireza Jodat",
+//             username: "aj",
+//             movments: [34, -45],
+//         },
+//         {
+//             owner: "Behzad Jannesar",
+//             username: "bj",
+//             movments: [-1, 7],
+//         },
+//         {
+//             owner: "Mehran Gol",
+//             username: "mg",
+//             movments: [9, -76],
+//         },
+//         {
+//             owner: "Mohsen Jodat",
+//             username: "mj",
+//             movments: [-67, -7],
+//         },
+//     ];
+
+//     // جمع تمامی واریزی‌های بانک
+//     (() =>
+//         console.log(
+//             array
+//                 .flatMap(account => account.movments)
+//                 .filter(movment => movment > 0)
+//                 .reduce((acc, curr) => acc + curr, 0)
+//         ))(); // 50
+
+//     // چند نفر می‌توانند پنج دلار وام بگیرند
+//     (() => {
+//         // با روش فیلتر
+//         console.log(
+//             array
+//                 .map(acc => acc.movments.reduce((acc, curr) => acc + curr, 0))
+//                 .filter(ball => ball > 5).length
+//         ); // تنها یک نفر می‌تواند وام بگیرد
+
+//         // reduce با روش
+//         console.log(
+//             array
+//                 .map(acc => acc.movments.reduce((acc, curr) => acc + curr, 0))
+//                 .reduce((acc, curr) => (curr > 5 ? ++acc : acc), 0)
+//         ); // تنها یک نفر می‌تواند وام بگیرد
+//     })();
+
+//     // جمع تمامی واریز‌ها و برداشت‌ها را به صورت جداگانه در یک شیء قرار دهید
+//     (() => {
+//         // روش اول
+//         const { variz, bardasht } = array
+//             .flatMap(acc => acc.movments)
+//             .reduce(
+//                 (sums, curr) => {
+//                     curr > 0 ? (sums.variz += curr) : (sums.bardasht += curr);
+//                     return sums;
+//                 },
+//                 {
+//                     variz: 0,
+//                     bardasht: 0,
+//                 }
+//             );
+//         console.log(variz, bardasht); // 50 -196
+
+//         // (خلاصه) روش دوم
+//         (() => {
+//             // initialize
+//             const { variz, bardasht } = array
+//                 .flatMap(account => account.movments)
+//                 .reduce(
+//                     (accumulator, current) => {
+//                         accumulator[current > 0 ? "variz" : "bardasht"] +=
+//                             current;
+//                         return accumulator;
+//                     },
+//                     { variz: 0, bardasht: 0 }
+//                 );
+
+//             // show result
+//             console.log(variz, bardasht); // 50 -196
+//         })();
+//     })();
+
+//     // جمع واریزی‌ها و برداشت‌ها را به صورت جداگانه در آرایه ذخیره کنید
+//     (() => {
+//         // initialize
+//         const [variz, bardash] = array
+//             .flatMap(acc => acc.movments)
+//             .reduce(
+//                 (acc, curr) => {
+//                     acc[curr > 0 ? 0 : 1] += curr;
+//                     return acc;
+//                 },
+//                 [0, 0]
+//             );
+
+//         // show result
+//         console.log(variz, bardash); // 50 -196
+//     })();
+// })();
+
+// مثال برای رشته‌ها
+(() => {
+    // initialize
+    const expections = ["a", "an", "but", "or"];
+})();
