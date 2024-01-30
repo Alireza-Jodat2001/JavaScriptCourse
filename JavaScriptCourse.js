@@ -1773,7 +1773,8 @@
 // (() => {
 //     const arr = ["ali reza", "kohfh lkhhf", "lkhgf vbgv", "ygjfb klng"];
 //     const newArr = arr.filter(
-//         (mov, i, arr) => mov.includes("vbgv") || mov.toLowerCase().includes("vbgv")
+//         (mov, i, arr) =>
+//             mov.includes("vbgv") || mov.toLowerCase().includes("vbgv")
 //     );
 //     console.log(newArr);
 // })();
@@ -2399,8 +2400,122 @@
 //     })();
 // })();
 
-// مثال برای رشته‌ها
-(() => {
-    // initialize
-    const expections = ["a", "an", "but", "or"];
-})();
+// // مثال برای رشته‌ها
+// (() => {
+//     // initialize
+//     const expections = ["a", "an", "but", "or", "am", "dont"];
+
+//     // Change String function
+//     // first way
+//     const changeStr = str =>
+//         str
+//             .trim()
+//             .toLowerCase()
+//             .split(" ")
+//             .reduce((acc, curr, index) => {
+//                 acc[index] = expections.some(exp => exp === curr)
+//                     ? curr
+//                     : curr.replace(curr[0], curr[0].toUpperCase());
+//                 return acc;
+//             }, [])
+//             .join(" ");
+
+//     // shortand way
+//     const changeStr1 = str =>
+//         str
+//             .trim()
+//             .toLowerCase()
+//             .split(" ")
+//             .map(curr =>
+//                 expections.some(exp => exp === curr)
+//                     ? curr
+//                     : curr.replace(curr[0], curr[0].toUpperCase())
+//             )
+//             .join(" ");
+
+//     // call function
+//     console.log(changeStr1("   i am ALIREZA")); // I am Alireza
+//     console.log(changeStr1("but i DONT     ")); // but I dont
+//     console.log(changeStr1("   this is a BOOK ")); // This Is a Book
+// })();
+175;
+// // اخرین تمرین برای بخش آرایه
+
+// // fetch data
+// fetch("http://localhost:8000/dog")
+//     .then(res => res.json())
+//     .then(data => dogFunc(data));
+
+// function dogFunc(data) {
+//     // 1
+//     (() => {
+//         // recommended Food function
+//         data.forEach(
+//             dog => (dog.recommended = Math.trunc(dog.weight ** 0.75 * 28))
+//         );
+
+//         // show result
+//         console.log(data);
+//     })();
+
+//     // 2
+//     (() => {
+//         // find sarah dog
+//         console.log("---- 2 ----");
+//         console.log(data.find(dog => dog.owners.includes("Sarah"))); //عنصر را در داخل آرایه برمی‌گرداند filter برای ما خود عنصر را برمی‌گرداند اما متد find متد
+//     })();
+
+//     // 3
+//     (() => {
+//         data.forEach(
+//             dog =>
+//                 (dog[dog.curFood > dog.recommended ? "ziadKhor" : "kamKhor"] =
+//                     dog.owners)
+//         );
+
+//         // create array
+//         let ziadArr = [];
+//         let kamArr = [];
+//         data.forEach(dog =>
+//             dog?.ziadKhor
+//                 ? ziadArr.push(dog.ziadKhor)
+//                 : kamArr.push(dog.kamKhor)
+//         );
+
+//         // show result
+//         console.log("---- 3 ----");
+//         console.log(`${ziadArr.flat().join(" and ")} : ziad khor`); // Matilda and Sarah and John : ziad khor
+//         console.log(`${kamArr.flat().join(" and ")}  : kam khor`); // Alice and Bob and Michael  : kam khor
+//     })();
+
+//     // 4
+//     (() => {
+//         // show result
+//         console.log("---- 4 ----");
+//         console.log(
+//             `${data
+//                 .filter(
+//                     ({ curFood, recommended }) =>
+//                         curFood > recommended * 0.9 &&
+//                         curFood < recommended * 1.1
+//                 )
+//                 .flatMap(({ owners }) => owners)
+//                 .join(" and ")} : sagesh be andazeh mikhorad`
+//         );
+//     })();
+
+//     // 8
+//     (() => {
+//         // initialize
+//         const result = data
+//             .slice()
+//             .sort(
+//                 ({ recommended: currRec }, { recommended: nextRec }) =>
+//                     currRec - nextRec
+//             );
+
+//         // show result
+//         console.log(result);
+//     })();
+// }
+177;
