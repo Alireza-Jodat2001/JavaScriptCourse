@@ -2840,3 +2840,65 @@
 //     );
 // })();
 186;
+// // بین المللی کردن تاریخ و ساعت
+// (() => {
+//     const now = new Date();
+//     const dateOption = {
+//         hour: "numeric",
+//         minute: "numeric",
+//         day: "numeric",
+//         year: "numeric",
+//     };
+
+//     console.log(
+//         new Intl.DateTimeFormat("fa-IR", {
+//             ...dateOption,
+//             month: "numeric",
+//         }).format(now)
+//     ); // ۱۴۰۲/۱۱/۱۴, ۲۰:۵۵
+
+//     console.log(
+//         new Intl.DateTimeFormat("fa-IR", {
+//             ...dateOption,
+//             month: "long",
+//         }).format(now)
+//     ); // ۱۴ بهمن ۱۴۰۲ ساعت ۲۰:۵۷
+
+//     console.log(
+//         new Intl.DateTimeFormat("fa-IR", {
+//             ...dateOption,
+//             month: "2-digit",
+//             weekday: "long",
+//         }).format(now)
+//     ); // ۱۴۰۲/۱۱/۱۴, ۲۱:۰۰ => اگر تک رقمی باشد پشت آن عدد صفر می‌گذارد
+
+//     console.log(
+//         new Intl.DateTimeFormat("fa-IR", {
+//             ...dateOption,
+//             month: "2-digit",
+//             weekday: "long",
+//         }).format(now)
+//     ); // شنبه ۱۴۰۲/۱۱/۱۴, ۲۱:۰۲
+// })();
+
+// // بین المللی کردن ساعت و تاریخ با استفاده از منطقه زمانی مرورگر
+// (() => {
+//     const local = navigator.language;
+//     const dateOption = {
+//         hour: "2-digit",
+//         day: "2-digit",
+//         minute: "2-digit",
+//         month: "2-digit",
+//         year: "2-digit",
+//     };
+
+//     console.log(local); // en-US
+//     console.log(new Intl.DateTimeFormat(local, dateOption).format(new Date())); // 02/03/24, 09:20 PM
+// })();
+187;
+// فرمت کردن اعداد
+(() => {
+    const num = 6753568;
+    console.log(new Intl.NumberFormat(navigator.language).format(num)); // 6,753,568
+    console.log(new Intl.NumberFormat("fa-IR").format(num)); // ۶٬۷۵۳٬۵۶۸
+})();
