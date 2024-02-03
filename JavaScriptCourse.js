@@ -2518,4 +2518,325 @@
 //         console.log(result);
 //     })();
 // }
-177;
+178;
+// // آشنایی با اعداد
+// (() => {
+//     console.log(0.1 + 0.2 === 0.3); // 0.30000000000000004 != 0.3 => false
+// })();
+
+// // برای تبدیل رشته به عدد
+// (() => {
+//     console.log(Number("23")); // typeOf => number
+//     console.log(+"23"); // typeOf => number - علامت بعلاوه باعث می‌شود تبدیل به عدد شود
+// })();
+
+// // method pars
+// // این متد برای تجزیه عدد از داخل یک رشته به کار می‌رود
+// // این متد پارامتر دوم هم می‌گرد که به عنوان مبنای اعداد است
+// // البته تمام این متد‌ها را می‌توان به صورت تکی صدا زد
+// (() => {
+//     // parse int
+//     console.log("---- parse int ----");
+//     console.log(Number.parseInt("44px")); // 44
+//     console.log(Number.parseInt("ali44")); // NaN
+
+//     // with parametr
+//     console.log(Number.parseInt("30px", 10)); // 30
+//     console.log(Number.parseInt("30px", 2)); // NaN
+//     console.log(Number.parseInt(30, 2)); // NaN
+
+//     // parse float
+//     console.log("---- parse float ----");
+//     console.log(Number.parseInt(" 1.2px  ")); // 1 => parseInt
+//     console.log(Number.parseFloat(" 1.2px  ")); // 1.2 => parseFloat
+
+//     // modern and best
+//     console.log("---- modern way ----");
+//     console.log(parseFloat("234.3vw")); // 234.3
+//     console.log(parseInt("122.9vh")); // 122
+
+//     // isNaN
+//     // هست یا نه NaN این متد بررسی می‌کند که از تایپ
+//     console.log("---- isNaN ----");
+//     console.log(isNaN(23)); // false
+//     console.log(isNaN("23")); // false
+//     console.log(isNaN(+"23")); // false
+//     console.log(isNaN(+"23X")); // true
+//     console.log(isNaN(2 / 0)); // false => infinity
+
+//     // isFinite method
+//     // این متد برای این است که مشخص کند عدد متناهی است یا خیر و همچنین اینکه عدد است یا نه
+//     console.log("---- isFinite ----");
+//     console.log(isFinite(23)); // true
+//     console.log(isFinite("23")); // true
+//     console.log(isFinite(+"23")); // true
+//     console.log(isFinite(+"23X")); // false
+//     console.log(isFinite(12 / 0)); // false => because infinity
+
+//     // isInteger method
+//     console.log("---- isInteger ----");
+//     console.log(Number.isInteger(23)); // true
+//     console.log(Number.isInteger(23.0)); // true
+//     console.log(Number.isInteger("23.0")); // false
+//     console.log(Number.isInteger(23 / 0)); // false => infinity
+// })();
+179;
+// // numbers method
+// // sqrt method
+// // جذر دوم اعداد
+// (() => {
+//     console.log("---- sqrt ----");
+//     console.log(Math.sqrt(25)); // 5
+
+//     // استفاده از عملگر توان برای جذر گرفتن
+//     console.log(8 ** (1 / 3)); // 2 => جذر سوم
+// })();
+
+// // min and max method
+// (() => {
+//     // max
+//     console.log("---- min and max ----");
+//     console.log(Math.max(24, 5, 30)); // 30
+//     console.log(Math.max(24, 5, "30")); // 30
+//     console.log(Math.max(24, 5, "30px")); // NaN
+
+//     // min
+//     console.log(Math.min(24, 5, "30")); // 5
+//     console.log(Math.min(24, 5, 30)); // 5
+//     console.log(Math.min(24, 5, "30px")); // NaN
+// })();
+
+// // PI method
+// (() => {
+//     console.log("---- PI ----");
+//     console.log(Math.PI); // 3.141592653589793
+
+//     // محاسبه مساحت دایره
+//     console.log(Math.PI * parseFloat("2.23rem") ** 2); // 15.622826107036682
+// })();
+
+// // random numbers
+// (() => {
+//     console.log("---- random ----");
+//     console.log(Math.trunc(Math.random() * 6 + 1)); // برای حذف کردن بخش اعشاری trunc کلمه
+
+//     // نوشتن فرمول برای اعداد تصادفی
+//     const randomFunc = (min, max) =>
+//         Math.floor(Math.random() * (max - min) + 1) + min;
+//     randomFunc(2, 9); // 3...9
+
+//     // هم باشد min اگه خواستی خود
+//     const randomFunc1 = (min, max) =>
+//         Math.floor(Math.random() * (max - min)) + min;
+//     randomFunc1(2, 9); // 2...9
+// })();
+
+// // rounding integers
+// (() => {
+//     console.log("---- round ----");
+//     console.log(Math.round(2.6)); // 3
+//     console.log(Math.round(2.5)); // 3
+//     console.log(Math.round(2.1)); // 2
+// })();
+
+// // ceil integers
+// (() => {
+//     console.log("---- ceil ----");
+//     console.log(Math.ceil(2.6)); // 3
+//     console.log(Math.ceil(2.1)); // 3
+// })();
+
+// // floor integers
+// (() => {
+//     console.log("---- floor ----");
+//     console.log(Math.floor(2.6)); // 2
+//     console.log(Math.floor(2.1)); // 2
+// })();
+
+// // floor و trunc تفاوت
+// // این دو روش فقط در اعداد مثبت یکی عمل می‌کنند
+// (() => {
+//     console.log("---- floor and trunc ----");
+//     console.log(Math.floor(-2.6)); // -3
+//     console.log(Math.trunc(-2.6)); // -2
+// })();
+
+// // toFixed متد
+// // برای گرد کردن اعداد و تبدیل به چند رقم اعشار
+// // ولی مشکل این است که به ما رشته برمی‌گرداند
+// (() => {
+//     console.log("---- to fixed ----");
+//     console.log((27.45).toFixed(0)); // 27 => typeOf = string
+//     console.log((27.55).toFixed(0)); // 28 => typeOf = string
+//     console.log((2.764).toFixed(4)); // 2.7640 => typeOf = string
+//     console.log(+(2.764).toFixed(2)); // 2.76 => typeOf = number
+// })();
+180;
+// // % عملگر باقیمانده
+// (() => {
+//     console.log(8 % 3); // 2
+// })();
+
+// // تابعی برای تشخیص زوج یا فرد بودن
+// (() => {
+//     const check = num => (num % 2 === 0 ? "Even" : "Odd");
+//     console.log(check(3)); // Odd
+// })();
+
+// // DOM مثالی برای این عملگر برای دستکاری در عناصر
+// (() => {
+//     Array.from(
+//         document.querySelectorAll(".span__180"),
+//         (el, index) => index % 2 === 0 && (el.style.background = "white")
+//     );
+// })();
+181;
+// // seprator numeric
+// // جدا کننده‌های عددی
+// (() => {
+//     console.log(23_00); // 2300
+
+//     // همچین اعدادی دریافت می‌کنیم Api در حالت هایی که از
+//     console.log(Number("23_00")); // NaN
+//     console.log(parseInt("23_01")); // 23
+//     console.log(parseFloat("23,01")); // 23
+// })();
+182;
+// // bigInt method
+// (() => {
+//     // بزرگ ترین عدد در حالت عادی
+//     console.log(Number.MAX_SAFE_INTEGER); // 9007199254740991
+
+//     // bigInt
+//     console.log(BigInt(23)); // 23n
+//     console.log(234444444444444444444444n); // 234444444444444444444444n
+
+//     // انجام عملیات بر روی این اعداد
+//     console.log(2n + 3n); // 5n
+//     console.log(2n * BigInt(34)); // 68n
+//     console.log(20n > 15); // true
+//     console.log(20n === 20); // false => bigInt != number
+//     console.log(20n == 20); // true
+//     console.log(20n == "20"); // true
+
+//     // تقسیم کردن
+//     // در این عمل بخش اعشاری حذف می‌گردد
+//     console.log(21n / 2n); // 10n
+// })();
+183;
+// // create a Date
+// // اگر به صورت خالی کال شود زمان همان لحظه را نشان می‌دهد
+// (() => {
+//     console.log(new Date()); // Sat Feb 03 2024 09:31:55 GMT+0330 (Iran Standard Time)
+
+//     // ما میتوانیم با دادن تاریخ به اطلاعات کامل آن دست پیدا کنیم
+//     console.log(new Date("dec 6, 2024")); // Fri Dec 06 2024 00:00:00 GMT+0330 (Iran Standard Time)
+//     console.log(new Date("aug 6, 2020 18:00:00")); // Thu Aug 06 2020 18:00:00 GMT+0430 (Iran Daylight Time)
+//     console.log(new Date(2023, 3, 4, 22, 1, 4)); // Tue Apr 04 2023 22:01:04 GMT+0330 (Iran Standard Time)
+//     console.log(new Date(2023, 3, 4, 32)); // Wed Apr 05 2023 08:00:00 GMT+0330 (Iran Standard Time)
+
+//     // زمان یونیکس
+//     // و می‌توانیم به آن حتی ثاتیه بدهیم تاریخ آن روز بعد از آن ثانیه رو به ما می‌دهد
+//     console.log(new Date(0)); // Thu Jan 01 1970 03:30:00 GMT+0330 (Iran Standard Time)
+//     console.log(new Date(12 * 24 * 60 * 60 * 1000)); // Tue Jan 13 1970 03:30:00 GMT+0330 (Iran Standard Time)
+// })();
+
+// // Date method
+// (() => {
+//     // initialize
+//     const date = new Date(2037, 1, 30);
+//     console.log(date); // Mon Mar 02 2037 00:00:00 GMT+0330 (Iran Standard Time)
+
+//     // get method
+
+//     // getYear
+//     // تعداد سال گذشتن از سال یونیکس است
+//     console.log(date.getYear()); // 137
+
+//     // getFullYear
+//     // تعداد سال گذشتن از سال یونیکس است
+//     console.log(date.getFullYear()); // 2037
+
+//     // getMounth
+//     console.log(date.getMonth()); // 2
+
+//     // getDate
+//     // برای شماره روز است در ماه است
+//     console.log(date.getDate()); // 2
+
+//     // getDay
+//     // برای شماره روز در هفته است
+//     // sunday === 0
+//     console.log(date.getDay()); // 1
+
+//     // getHours
+//     console.log(date.getHours()); // 0
+
+//     // getMinutes
+//     console.log(date.getMinutes()); // 0
+
+//     // getSeconds
+//     console.log(date.getSeconds()); // 0
+
+//     // toISOString
+//     // برای نمایش تاریخ به شکل استاندارد جهانی است
+//     console.log(date.toISOString()); // 2037-03-01T20:30:00.000Z
+
+//     // getTime
+//     // تایم را با واحد میلی ثانیه از زمان یونیکس به ما می‌دهد
+//     console.log(date.getTime()); // 2119552200000
+//     console.log(new Date(2119552200000)); // Mon Mar 02 2037 00:00:00 GMT+0330 (Iran Standard Time)
+
+//     // Date.now()
+//     // تایم الان را به واحد میلی ثانیه می‌دهد
+//     console.log(Date.now()); // 1706944754875
+
+//     // set method
+//     // نیز وجود دارد set برای get تمام متد‌های
+//     // این روش تاریخ داخل متغیر را عوض می‌کند
+//     date.setFullYear(2000);
+//     console.log(date.getFullYear()); // 2000
+// })();
+184;
+// // تمرین برای فرمت کردن تاریخ به میلادی
+// (() => {
+//     const date = new Date("2024-02-03T08:27:49.661Z");
+
+//     const day = `${date.getDate()}`.padStart(2, 0);
+//     const month = `${date.getMonth() + 1}`.padStart(2, 0);
+//     const year = date.getFullYear();
+//     const hour = date.getHours();
+//     const minute = date.getMinutes();
+
+//     console.log(`As of ${day}/${month}/${year}, ${hour}:${minute}`);
+// })();
+185;
+// // کم کردن دو تاریخ از یکدیگر
+// (() => {
+//     // روش خلاصه تر
+//     // const storyDate = +new Date(
+//     //     new Date(new Date(new Date().setHours(6)).setMinutes(0)).setSeconds(0)
+//     // );
+
+//     // روش قابل فهم
+//     const morning = new Date();
+//     const setD = new Date(morning.setDate(11));
+//     const setH = new Date(setD.setHours(0));
+//     const setM = new Date(setH.setMinutes(0));
+//     const storyDate = +new Date(setM.setSeconds(0));
+//     const now = +new Date();
+//     const result = Math.trunc(Math.abs((storyDate - now) / 1000));
+
+//     const minuteR = Math.trunc(result / 60);
+//     const hourR = Math.trunc(result / (60 * 60));
+//     const dayR = Math.trunc(result / (60 * 60 * 24));
+//     const weekR = Math.trunc(result / (60 * 60 * 24 * 7));
+
+//     console.log(
+//         (minuteR < 60 && `${minuteR}m`) ||
+//             (hourR < 24 && `${hourR}h`) ||
+//             (dayR < 7 && `${dayR}d`) ||
+//             (weekR < 4 && `${weekR}w`)
+//     );
+// })();
+186;
