@@ -2896,9 +2896,131 @@
 //     console.log(new Intl.DateTimeFormat(local, dateOption).format(new Date())); // 02/03/24, 09:20 PM
 // })();
 187;
-// فرمت کردن اعداد
-(() => {
-    const num = 6753568;
-    console.log(new Intl.NumberFormat(navigator.language).format(num)); // 6,753,568
-    console.log(new Intl.NumberFormat("fa-IR").format(num)); // ۶٬۷۵۳٬۵۶۸
-})();
+// // فرمت کردن اعداد
+// (() => {
+//     const num = 6753568;
+//     console.log(new Intl.NumberFormat(navigator.language).format(num)); // 6,753,568
+//     console.log(new Intl.NumberFormat('fa-IR').format(num)); // ۶٬۷۵۳٬۵۶۸
+// })();
+
+// // with option
+// (() => {
+//     console.log(
+//         new Intl.NumberFormat(navigator.language, {
+//             style: 'unit',
+//             unit: 'mile-per-hour',
+//         }).format(897497349)
+//     ); // 897,497,349 mph
+
+//     console.log(
+//         new Intl.NumberFormat(navigator.language, {
+//             style: 'unit',
+//             unit: 'celsius',
+//         }).format(897497349)
+//     ); // 897,497,349°C
+
+//     console.log(
+//         new Intl.NumberFormat(navigator.language, {
+//             style: 'percent',
+//         }).format(0.9)
+//     ); // 90%
+
+//     console.log(
+//         new Intl.NumberFormat(navigator.language, {
+//             style: 'currency',
+//             currency: 'EUR',
+//         }).format(95)
+//     ); // €95.00
+
+//     // اگر می‌خوای بدون جدا کننده نمایش بده
+//     console.log(
+//         new Intl.NumberFormat(navigator.language, {
+//             style: 'currency',
+//             currency: 'EUR',
+//             useGrouping: false,
+//         }).format(9598479)
+//     ); // €9598479.00
+// })();
+188;
+// // setTimeout
+// (() => {
+//     setTimeout((a, b) => console.log(`${a} and ${b}`), 2000, 'ali', 'reza'); // ali and reza
+
+//     // کالبک جدا
+//     const dilay = k => console.log(k);
+//     setTimeout(dilay, 3000, 'first'); // first
+// })();
+
+// // clearTimeout
+// (() => {
+//     const arr = ['ali', 'reza', 'mohsen', 'bezi'];
+//     const set1 = setTimeout(
+//         arrN => arrN.forEach(name => console.log(name)),
+//         3000,
+//         arr
+//     );
+//     arr.includes('zahra') && clearTimeout(set1);
+// })();
+
+// // setInterval
+// (() => {
+//     console.log('---- setInterval ----');
+//     setInterval(() => console.log(new Date()), 1000);
+// })();
+
+// // clock practice
+// // first way
+// () => {
+//     setInterval(() => {
+//         // initialize
+//         const now = new Date();
+//         const hour = `${now.getHours()}`.padStart(2, 0);
+//         const minute = `${now.getMinutes()}`.padStart(2, 0);
+//         const second = `${now.getSeconds()}`.padStart(2, 0);
+
+//         // show result
+//         document.querySelector(
+//             '.clock'
+//         ).textContent = `${hour}:${minute}:${second}`; //  01:23:08
+//     }, 1000);
+// };
+
+// // second way
+// setInterval(() => {
+//     // initialize
+//     const now = Intl.DateTimeFormat(navigator.language, {
+//         hour: '2-digit',
+//         minute: '2-digit',
+//         second: '2-digit',
+//     }).format(new Date());
+
+//     // show result
+//     document.querySelector('.clock').textContent = now; // 01:23:08 PM
+// }, 1000);
+189;
+// // Timer practice
+// (() => {
+//     let ex = 10;
+
+//     document.querySelector('.timer').addEventListener('click', () => {
+//         const timer = setInterval(() => {
+//             const min = `${Math.trunc(ex / 60)}`.padStart(2, 0);
+//             const sec = `${Math.trunc(ex % 60)}`.padStart(2, 0);
+
+//             // warning
+//             ex <= 5 && ex % 2 === 1
+//                 ? (document.querySelector('.timer-box').style.color = 'red')
+//                 : (document.querySelector('.timer-box').style.color = '#000');
+
+//             // stop timer
+//             !ex && clearInterval(timer);
+
+//             // show result
+//             document.querySelector('.timer-box').textContent = `${min}:${sec}`;
+
+//             // count down
+//             ex--;
+//         }, 1000);
+//     });
+// })();
+192;
