@@ -3194,3 +3194,58 @@
 //     // اگر می‌خواهید تمام کلاس‌ها ریست شده و فقط یک کلاس جایگزین شود
 //     () => (document.querySelector('.a__195').className = 'ali');
 // })();
+197;
+// // addEventsListener
+// (() => {
+//     const h1 = document.querySelector('.h1__197');
+
+//     // js روشی قدیمی برای ایجاد رویداد
+//     h1.onclick = () => console.log('Entered!');
+
+//     // mouseenter event
+//     // هر بار که موس وارد این عنصر می‌شود قطعه کد اجراء می‌شود
+//     () => h1.addEventListener('mouseenter', () => console.log('Entered!'));
+// })();
+
+// // removeEventsListener
+// (() => {
+//     const h1 = document.querySelector('.h1__197');
+
+//     // برای حذف کردن یک رویداد ابتدا تابع آن را در یک متغیر ذخیره کنیم
+//     // و سپس به وسیله اسم همان کال‌بک می‌توان رویداد را حذف کرد
+//     () => {
+//         const func = () => {
+//             console.log('Entered!');
+
+//             // فقط یکبار اجرا می‌شود
+//             h1.removeEventListener('mouseenter', func);
+//         };
+//         h1.addEventListener('mouseenter', func);
+//     };
+// })();
+199;
+// event propagation
+// انتشار رویداد
+(() => {
+    const div = document.querySelector('.div-propagation');
+    const nav = document.querySelector('.nav-propagation');
+    const span = document.querySelector('.span-propagation');
+
+    const randomInt = (max, min) =>
+        Math.floor(Math.random() * (max - min) + min);
+    const randomColor = () =>
+        `rgb(${randomInt(0, 256)}, ${randomInt(0, 256)}, ${randomInt(0, 256)})`;
+
+    div.addEventListener(
+        'click',
+        e => (e.target.style.background = randomColor())
+    );
+    nav.addEventListener(
+        'click',
+        e => (e.target.style.background = randomColor())
+    );
+    span.addEventListener(
+        'click',
+        e => (e.target.style.background = randomColor())
+    );
+})();
