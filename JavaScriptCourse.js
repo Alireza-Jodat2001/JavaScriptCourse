@@ -3023,4 +3023,174 @@
 //         }, 1000);
 //     });
 // })();
-192;
+194;
+// // Advanced DOM in JavaScript
+// // document
+// (() => {
+//     // شامل تمامی متد‌هایی است که مربوط به سند ما می‌شود html سند
+//     // html یک مثال از متد‌های سند
+//     console.log(document.location.href.startsWith('http://127.0.0.1:5501')); // true
+//     console.log(document.location.href.endsWith('/index.html')); // true
+
+//     // document
+//     console.log(document.documentElement); // تمام تگ‌ها را نمایش می‌دهد
+//     console.log(document.head); // را نمایش می‌دهد head تگ
+//     console.log(document.body); // را نمایش می‌دهد body تگ
+// })();
+
+// // انواع مختلف انتخابگر‌ها
+// (() => {
+//     console.log(document.getElementById('timer'));
+
+//     // عنصری را حذف کنیم لیست ما بروز نمی‌شود NodeList اگر در
+//     console.log(document.querySelectorAll('.span__172')); // NodeList(2) [span.span__172, span.span__172]
+
+//     // HTMLCollection
+//     // را حذف کنیم بلافاصله لیست ما بروز می‌شود html شبیه به آرایه است و در صورتی که یک یا چند عنصر
+//     console.log(document.getElementsByClassName('span__172')); // HTMLCollection(2) [span.span__172, span.span__172]
+//     console.log(document.getElementsByTagName('div')); // HTMLCollection(4) [div, div, div.clock, div#timer, timer: div#timer]
+// })();
+
+// // JS با HTML روش‌های ایجاد عنصر
+// (() => {
+//     // روش اول
+//     // insertAdjacentHTML
+//     // afterbegin , afterend , beforebegin , beforeend
+//     document.body.insertAdjacentHTML(
+//         'beforeend',
+//         '<div class="insert">with insertAdjacentHTML</div>'
+//     );
+
+//     // روش دوم
+//     // ایجاد عنصر به صورت دستی
+//     // createElement
+//     const massage = document.createElement('div');
+//     massage.classList.add('massage');
+//     massage.style = 'display: inline-block; border: 1px solid';
+//     massage.innerHTML = 'ali <button class="massage-btn">massage</button>'; // عنصر را ایجاد می‌کند
+//     // massage.textContent = 'ali <button>massage</button>'; // ali <button>massage</button> => عنصر را ایجاد نمی‌کند
+//     // prepend => body اولین عنصر
+//     // append => body آخرین عنصر
+//     // after => body بعد از عنصر
+//     // before => body قبل از عنصر
+//     document.body.before(massage);
+
+//     // را نمی‌توان در دو جا قرار داد مگر اینکه از آن کپی بگیریم massage عنصر
+//     // cloneNode
+//     document.body.after(massage.cloneNode(true));
+// })();
+
+// // delete element
+// // remove method
+// (() => {
+//     Array.from(document.querySelectorAll('.massage-btn'), el =>
+//         el.addEventListener('click', e => e.target.parentElement.remove())
+//     );
+// })();
+
+// // removeChild method
+// (() => {
+//     // // without removeChild method
+//     // این روش کامل تر است
+//     (() =>
+//         Array.from(document.querySelectorAll('.massage'), el =>
+//             el.addEventListener('click', e =>
+//                 Array.from(
+//                     e.target.children,
+//                     child =>
+//                         child.classList.contains('massage-btn') &&
+//                         child.remove()
+//                 )
+//             )
+//         ))();
+
+//     // whit removeChild method
+//     () =>
+//         document
+//             .querySelectorAll('.massage')[0]
+//             .addEventListener('click', event => {
+//                 const m = document.querySelectorAll('.massage-btn')[0];
+//                 event.target.removeChild(m);
+//             });
+// })();
+195;
+// // styles
+// (() => {
+//     // styling
+//     () => (document.body.style.height = '98.6vh');
+
+//     // get style (only inline style)
+//     () => console.log(document.body.style.height); // 98.6vh
+
+//     // get all styles (inline and css style and user agent stylesheet)
+//     // getComputedStyle method
+//     () => {
+//         console.log(getComputedStyle(document.body)); // all styles
+//         console.log(getComputedStyle(document.body).display); // flex
+//     };
+
+//     // change css style with getComputedStyle method
+//     () => {
+//         document.body.style.height =
+//             parseFloat(getComputedStyle(document.body).height) + 20 + 'vh';
+//         console.log(getComputedStyle(document.body).height); // vh => px
+//     };
+
+//     // change css variable
+//     () => document.documentElement.style.setProperty('--back', '#000');
+// })();
+
+// // get Attribute
+// (() => {
+//     // get Attribute value
+//     () => console.log(document.querySelector('.userInput').type); // text
+
+//     // getAttribute method
+//     // این متد کامل تر است و صفات غیر استاندارد را هم برمی‌گرداند
+//     () => {
+//         console.log(document.querySelector('.userInput').ali); // undefined => غیر استاندارد است
+//         console.log(document.querySelector('.userInput').getAttribute('ali')); // reza
+//     };
+
+//     // change attribute value
+//     () => {
+//         document.querySelector('.userInput').type = 'jodat';
+//         console.log(document.querySelector('.userInput').getAttribute('type')); // jodat
+//     };
+
+//     // a تفاوت گرفتن مقدار سورس عکس یا لینک تگ
+//     // استفاده کرد getAttribute در مواردی که آدرس دهی ما مربوط به فایل‌های داخلی میشوند باید از
+//     // از هر دو روش می‌توان استفاده کرد https://www.google.com اما مثلا در آدرس دهی خارجی مثل
+//     () => {
+//         console.log(document.querySelector('.a__195').href); // http://127.0.0.1:5501/index.html#
+//         console.log(document.querySelector('.a__195').getAttribute('href')); // #
+//     };
+// })();
+
+// // set Attribute
+// () => {
+//     document.querySelector('.userInput').setAttribute('r', 'b');
+//     console.log(document.querySelector('.userInput').getAttribute('r')); // b
+// };
+
+// // Data Attribute
+// // یک آبجکت است
+// () => console.log(document.querySelector('.a__195').dataset.version); // 4.2.0
+
+// // Classes
+// (() => {
+//     // add and remove method
+//     () => {
+//         document.querySelector('.a__195').classList.add('a', 'b');
+//         document.querySelector('.a__195').classList.remove('a', 'b');
+//     };
+
+//     // toggle and contains method
+//     () => {
+//         document.querySelector('.a__195').classList.contains('a');
+//         document.querySelector('.a__195').classList.toggle('a');
+//     };
+
+//     // اگر می‌خواهید تمام کلاس‌ها ریست شده و فقط یک کلاس جایگزین شود
+//     () => (document.querySelector('.a__195').className = 'ali');
+// })();
