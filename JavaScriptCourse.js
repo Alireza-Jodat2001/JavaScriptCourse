@@ -3224,28 +3224,203 @@
 //     };
 // })();
 199;
-// event propagation
-// انتشار رویداد
-(() => {
-    const div = document.querySelector('.div-propagation');
-    const nav = document.querySelector('.nav-propagation');
-    const span = document.querySelector('.span-propagation');
+// // event propagation
+// // انتشار ایونت
+// () => {
+//     const div = document.querySelector('.div-propagation');
+//     const nav = document.querySelector('.nav-propagation');
+//     const span = document.querySelector('.span-propagation');
 
-    const randomInt = (max, min) =>
-        Math.floor(Math.random() * (max - min) + min);
-    const randomColor = () =>
-        `rgb(${randomInt(0, 256)}, ${randomInt(0, 256)}, ${randomInt(0, 256)})`;
+//     const randomInt = (max, min) =>
+//         Math.floor(Math.random() * (max - min) + min);
+//     const randomColor = () =>
+//         `rgb(${randomInt(0, 256)}, ${randomInt(0, 256)}, ${randomInt(0, 256)})`;
 
-    div.addEventListener(
-        'click',
-        e => (e.target.style.background = randomColor())
-    );
-    nav.addEventListener(
-        'click',
-        e => (e.target.style.background = randomColor())
-    );
-    span.addEventListener(
-        'click',
-        e => (e.target.style.background = randomColor())
-    );
-})();
+//     // رنگ والد‌هایی که ایونت دارند هم عوض می‌شود div با کلیک کردن برروی
+//     // در درون والد‌های خود قرار دارد div زیرا
+//     // فقط در این نوع از توابع بی‌نام به خود عنصر دارای ایونت اشاره می‌کنند this کلمه کلیدی
+//     div.addEventListener('click', function (e) {
+//         // به تعداد والد هایی که ایونت برایشان ست شده چاپ می‌شود
+//         // اما همه فقط عنصر کلیک شده را چاپ می‌کنند
+//         console.log(e.target);
+
+//         // فقط به عنصر دارای ایونت اشاره می‌کند this کلمه کلیدی
+//         console.log(this); // div
+
+//         // عمل می‌کند this این هم مثل کلمه کلیدی
+//         // و فقط به عنصر دارای ایونت اشاره می‌کند
+//         // (e.currentTarget === this) => البته فقط در همین نوع از توابع بی‌نام
+//         console.log(e.currentTarget, 'currentTarget');
+
+//         this.style.background = randomColor();
+//     });
+
+//     // رنگ والد‌هایی که ایونت دارند هم عوض می‌شود nav با کلیک کردن برروی
+//     // در درون والد‌های خود قرار دارد nav زیرا
+//     // فقط در این نوع از توابع بی‌نام به خود عنصر دارای ایونت اشاره می‌کنند this کلمه کلیدی
+//     nav.addEventListener('click', function (e) {
+//         // به تعداد والد هایی که ایونت برایشان ست شده چاپ می‌شود
+//         // اما همه فقط عنصر کلیک شده را چاپ می‌کنند
+//         console.log(e.target);
+
+//         // فقط به عنصر دارای ایونت اشاره می‌کند this کلمه کلیدی
+//         console.log(this); // nav
+
+//         // عمل می‌کند this این هم مثل کلمه کلیدی
+//         // و فقط به عنصر دارای ایونت اشاره می‌کند
+//         // (e.currentTarget === this) => البته فقط در همین نوع از توابع بی‌نام
+//         console.log(e.currentTarget, 'currentTarget');
+
+//         this.style.background = randomColor();
+//     });
+
+//     // رنگ والد‌هایی که ایونت دارند هم عوض می‌شود span با کلیک کردن برروی
+//     // در درون والد‌های خود قرار دارد span زیرا
+//     // فقط در این نوع از توابع بی‌نام به خود عنصر دارای ایونت اشاره می‌کنند this کلمه کلیدی
+//     span.addEventListener('click', function (e) {
+//         // به تعداد والد هایی که ایونت برایشان ست شده چاپ می‌شود
+//         //  اما همه فقط عنصر کلیک شده را چاپ می‌کنند
+//         console.log(e.target);
+
+//         // فقط به عنصر دارای ایونت اشاره می‌کند this کلمه کلیدی
+//         console.log(this); // span
+
+//         // عمل می‌کند this این هم مثل کلمه کلیدی
+//         // و فقط به عنصر دارای ایونت اشاره می‌کند
+//         // (e.currentTarget === this) => البته فقط در همین نوع از توابع بی‌نام
+//         console.log(e.currentTarget, 'currentTarget');
+
+//         this.style.background = randomColor();
+//     });
+// };
+
+// // stopPropagation()
+// // اجرا شدن ایونت در والدها را متوقف می‌سازد
+// // اما استفاده از این روش توصیه نمی‌شود
+// () => {
+//     const div = document.querySelector('.div-propagation');
+//     const nav = document.querySelector('.nav-propagation');
+//     const span = document.querySelector('.span-propagation');
+
+//     div.addEventListener('click', function () {
+//         console.log('clicked!');
+//     });
+
+//     nav.addEventListener('click', function () {
+//         console.log('clicked!');
+//     });
+
+//     span.addEventListener('click', function (e) {
+//         console.log('clicked!');
+//         e.stopPropagation();
+//     });
+// };
+
+// // ایجاد الویت در حباب ایونت
+// // بدهیم true به هر کدام از ایونت‌ها مقدار سوم
+// // اگر شرایط حباب ایونت را داشته باشد اول از همه اجرا می‌شود
+// // و سپس مابقی به ترتیب اجرا میشوند
+
+// // است true دارای nav در مثال زیر فقط
+// // کلیک شود span اگر برروی
+// // است nav در داخل span شرایط حباب ایونت فراهم است زیرا
+// // با این حال ترتیب اجرا به صورت زیر است
+// // clicked! nav => true به دلیل داشتن
+// // clicked! span
+// // clicked! div
+// (() => {
+//     const div = document.querySelector('.div-propagation');
+//     const nav = document.querySelector('.nav-propagation');
+//     const span = document.querySelector('.span-propagation');
+
+//     div.addEventListener('click', function () {
+//         console.log('clicked! div');
+//     });
+
+//     nav.addEventListener(
+//         'click',
+//         function () {
+//             console.log('clicked! nav');
+//         },
+//         true
+//     );
+
+//     span.addEventListener('click', function (e) {
+//         console.log('clicked! span');
+//     });
+// })();
+201;
+// // DOM traversing
+// (() => {
+//     const div = document.querySelector('.div-propagation');
+
+//     // DOM traversing
+//     () => console.log(div.querySelector('.span-propagation')); // OK!
+
+//     // childNode
+//     // انواع مختلف از گره را به ما می‌دهد
+//     // است NodeList نوع آن
+//     () => console.log(div.childNodes); // NodeList(3) [text, nav.nav-propagation, text]
+
+//     // children
+//     // خود عناصر را به ما می‌دهد
+//     // است HTMLCollection  نوع آن
+//     () => console.log(div.children); // HTMLCollection [nav.nav-propagation]
+
+//     // lastElementChild and firstElementChild
+//     () => {
+//         console.log(div.firstElementChild); // .nav-propagation
+//         console.log(div.lastElementChild); // .nav-propagation
+//     };
+
+//     // parentNode
+//     // این روش فقط در محدوده والد مستقیم است
+//     // که به ما انواع گره‌ها را می‌دهد
+//     () => console.log(div.querySelector('.span-propagation').parentNode); // nav.nav-propagation
+
+//     // ها node به وسیله textContent تغییر
+//     () => (div.childNodes[0].textContent = 'ali');
+
+//     // parentElement
+//     // این روش فقط در محدوده والد مستقیم است
+//     // که به ما خود والد را می‌دهد
+//     () => console.log(div.querySelector('.span-propagation').parentElement); // nav.nav-propagation
+
+//     // closest method
+//     // این روش نزدیک ترین والد را به ما می‌دهد
+//     () =>
+//         console.log(
+//             div.querySelector('.span-propagation').closest('.div-propagation')
+//         );
+
+//     const btn = document.querySelector('.btn143');
+
+//     // going sideways : sibling
+//     // nextElementSibling and previousElementSibling
+//     // خود عنصر را برمی‌گرداند
+//     () => {
+//         console.log(btn.nextElementSibling); // form
+//         console.log(btn.previousElementSibling); // btn142
+//     };
+
+//     // nextSibling and previousSibling
+//     // خود عنصر را بر نمی‌گرداند
+//     () => {
+//         console.log(btn.nextSibling); // #text
+//         console.log(btn.previousSibling); // #text
+//     };
+
+//     // تمرین برای پیدا کردن فرزند مورد نظر
+//     const form = document.querySelector('.form1');
+
+//     // first way
+//     () => console.log(form.querySelector('.btn166'));
+
+//     // second way
+//     // DOM traversing
+//     () =>
+//         Array.from(
+//             form.children,
+//             child => child.classList.contains('btn166') && console.log(child)
+//         );
+// })();
