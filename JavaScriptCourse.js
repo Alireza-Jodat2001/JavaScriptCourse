@@ -3424,3 +3424,423 @@
 //             child => child.classList.contains('btn166') && console.log(child)
 //         );
 // })();
+210;
+// // other addEventListener
+// // DOMContentLoaded
+// // بارگذاری میشود این ایونت اجرا می‌شود DOM زمانی که
+// // این ایونت رخ می‌دهد HTML یا به عبارتی پس از اجرا شدن
+// (() => document.addEventListener('DOMContentLoaded', e => console.log(e)))();
+
+// // load
+// // پس از بارگذاری کامل پنجره این ایونت رخ می‌دهد
+// (() => window.addEventListener('load', e => console.log(e)))();
+
+// // beforeunload
+// // این ایونت در هنگام بستن پنجره و بارگذاری مجدد پنجره یک پیغام را به نمایش در می‌آورد
+// () =>
+//     window.addEventListener('beforeunload', e => {
+//         e.preventDefault();
+//         e.returnValue = '';
+//     });
+216;
+// // OOP (Object Oriented Programming)
+// // نمی‌توان استفاده کرد Arrow در این روش از تابع
+// // است this که یکی از دلایل آن استفاده زیاد از کلمه کلیدی
+// // در اسم گذاری کلاس‌ها بهتر است اولین حرف آن بزرگ باشد
+// // ها دارند function کلاس‌ها تشابه زیادی به
+// // صدا زده شوند new اما یکی از تفاوت آنها این است که باید با کلمه کلیدی
+// // بعد از کال شدن یک شیء ساخته می‌شود
+// // است this که این شیء برابر با کلمه کلیدی
+// // متصل می‌شود prototype و این شیء ایجاد شده به
+// () => {
+//     // first way
+//     const Person = function (fName, lName) {};
+//     console.log(new Person('ali', 'jodat')); // Person {} => is Empty
+//     // second way
+//     function Person1(fName, lName) {
+//         console.log(this);
+//     }
+//     new Person1('ali', 'jodat'); // Person1 {} => is Empty
+// };
+
+// // چگونه آن شیء خالی را پر کنیم
+// () => {
+//     function Person(fName, lName) {
+//         this.firstName = fName;
+//         this.lastName = lName;
+//     }
+//     console.log(new Person('ali', 'jodat')); // Person {firstName: 'ali', lastName: 'jodat'}
+// };
+
+// // ایجاد چند شیء با فرمت یکسان
+// () => {
+//     function Person(fName, lName) {
+//         this.firstName = fName;
+//         this.lastName = lName;
+//     }
+//     const ali = new Person('ali', 'jodat'); // Person {firstName: 'ali', lastName: 'jodat'}
+//     const reza = new Person('reza', 'jodat'); // Person {firstName: 'reza', lastName: 'jodat'}
+//     const mohsen = new Person('mohsen', 'jodat'); // Person {firstName: 'mohsen', lastName: 'jodat'}
+// };
+
+// // instanceof method
+// // برای تشخیص این است که آن متغیر نمونه‌ای از آن تابع است
+// () => {
+//     function Person(fName, lName) {
+//         this.firstName = fName;
+//         this.lastName = lName;
+//     }
+//     const ali = new Person('ali', 'jodat');
+//     const reza = 'OK';
+//     console.log(ali instanceof Person); // true
+//     console.log(reza instanceof Person); // false
+// };
+
+// // به شیء خودمان method نحوه ایجاد کردن
+// // با روش پایین اصلا بهینه نیست method که البته تعریف کردن
+// () => {
+//     function Person(fName, lName, age) {
+//         this.firstName = fName;
+//         this.lastName = lName;
+//         this.age = age;
+//         this.calcAge = function () {
+//             return 2024 - this.age;
+//         };
+//     }
+//     const ali = new Person('ali', 'jodat', 2001);
+//     const { firstName, lastName } = ali;
+//     console.log(`${firstName} ${lastName}: ${ali.calcAge()}`); // ali jodat: 23
+// };
+217;
+// // Prototype
+// // با اضافه کردن پروتوتایپ به کانستراکتور تمامی اشیائی که از آن ساخته می‌شوند به آن دسترسی دارند
+// // add method
+// () => {
+//     function Person(fName, lName, age) {
+//         this.firstName = fName;
+//         this.lastName = lName;
+//         this.age = age;
+//         this.calcAge = function () {
+//             return 2024 - this.age;
+//         };
+//     }
+//     console.log(Person.prototype); // constructor: ƒ Person(fName, lName, age) => جزو نمونه اولیه نیست calcAge همانطور که می‌بینید متد
+//     Person.prototype.newCalcAge = function () {
+//         return 2024 - this.age;
+//     };
+//     console.log(Person.prototype); // {newCalcAge: ƒ, constructor: ƒ} => حالا به عنوان نمونه اولیه اضافه شده است
+//     const ali = new Person('', '', 2001);
+//     console.log(ali.newCalcAge()); // 23
+//     // ساخته شود به این پروتوتایپ دسترسی خواهد داشت Person حالا هر شیء که از تابع کانستراکتور
+//     const reza = new Person('reza', 'jodat', 2005);
+//     console.log(reza.newCalcAge()); // 19
+//     console.log(reza.__proto__ === Person.prototype); // true => پروتوتایپ‌های آنها یکی هستند
+//     // isPrototypeOf() method
+//     console.log(Person.prototype.isPrototypeOf(reza)); // true
+//     console.log(Person.prototype.isPrototypeOf(Person)); // false
+// };
+
+// // add spcies
+// () => {
+//     function Person(fName, lName, age) {
+//         this.firstName = fName;
+//         this.lastName = lName;
+//         this.age = age;
+//         this.calcAge = function () {
+//             return 2024 - this.age;
+//         };
+//     }
+//     Person.prototype.width = '120px';
+//     const div = new Person('div', 'span', 20);
+//     console.log(div); // Person {firstName: 'div', lastName: 'span', age: 20, calcAge: ƒ} => نمونه اولیه اینجا نیست
+//     // first way
+//     console.log(div.width); // 120px
+//     // second way
+//     console.log(div.__proto__.width); // 120px
+// };
+
+// // hasOwnProperty('')
+// // برای چک کردن اینکه آن ویژگی فقط در اختیار آن شیء است یا نه
+// () => {
+//     function Person(fName, lName, age) {
+//         this.firstName = fName;
+//         this.lastName = lName;
+//         this.age = age;
+//         this.calcAge = function () {
+//             return 2024 - this.age;
+//         };
+//     }
+//     Person.prototype.width = '120px';
+//     const div = new Person('div', 'span', 20);
+//     console.log(div.hasOwnProperty('width')); // false => نیست div این ویژگی نوعی پروتوتایپ است و فقط برای شیء
+// };
+218;
+// // نحوه دسترسی به تمام پروتوتایپ‌های از قبل تعریف شده
+// // hasOwnProperty, isPrototypeOf,... مثل
+// () => {
+//     function Person(fName, lName, age) {
+//         this.firstName = fName;
+//         this.lastName = lName;
+//         this.age = age;
+//         this.calcAge = function () {
+//             return 2024 - this.age;
+//         };
+//     }
+//     Person.prototype.average = function () {
+//         return 2024 - age;
+//     };
+//     const ali = new Person('ali', 'jodat', 2000);
+//     console.log(ali.__proto__.__proto__); // {constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, …}
+//     console.log(ali.__proto__.__proto__.__proto__); // null
+// };
+
+// // Prototype in Array
+// // با این کار می‌توان به تمامی متد‌های آرایه دسترسی پیدا کرد
+// () => {
+//     const arr = [12, 3, 556, 676, 2];
+//     console.log(arr.__proto__); // [constructor: ƒ, at: ƒ, concat: ƒ, copyWithin: ƒ, fill: ƒ, …]
+//     console.log(arr.__proto__ === Array.prototype); // true
+// };
+
+// // prototype لایه‌های داخلی
+// () => {
+//     const arr = [12, 3, 556, 676, 2];
+//     console.log(arr.__proto__); // [constructor: ƒ, at: ƒ, concat: ƒ, copyWithin: ƒ, fill: ƒ, …]
+//     // اینبار به متد‌های اشیاء می‌رسیم
+//     // خود یک شیء است arr.__proto__ زیرا
+//     console.log(arr.__proto__.__proto__); // [constructor: ƒ, at: ƒ, concat: ƒ, copyWithin: ƒ, fill: ƒ, …]
+// };
+
+// // add prototype in array
+// // ست می‌شوند و در خارج از آن بلاک می‌توان به آن دسترسی داشت global ها به صورت prototype این
+// () => {
+//     const arr = [12, 3, 556, 676, 2];
+//     arr.__proto__.su = function () {
+//         console.log(this.reduce((acc, curr) => (acc += curr), 0));
+//     };
+//     arr.su(); // 1249
+//     Array.prototype.ali = function () {
+//         console.log(this);
+//     };
+//     arr.ali(); // [12, 3, 556, 676, 2]
+// };
+
+// // ایجاد متد جدید برای آرایه
+// // البته که این کار درست نیست
+// // زیرا ممکن است در آینده کد ما دچار تداخل با متد‌های جدید جاوااسکریپتی شود
+// () => {
+//     const arr = [0, 1, 1, 34, 34, 2];
+//     Array.prototype.unique = function () {
+//         console.log([...new Set(this)]);
+//     };
+//     arr.unique(); // [0, 1, 34, 2]
+// };
+219;
+// // prototype in elements
+// () => {
+//     const body = document.body;
+//     console.log(body.__proto__); // => [[Prototype]]: HTMLElement
+//     console.log(body.__proto__.__proto__); // => [[Prototype]]: Element
+//     console.log(body.__proto__.__proto__.__proto__); // => [[Prototype]]: Node
+//     console.log(body.__proto__.__proto__.__proto__.__proto__); // => [[Prototype]]: EventTarget
+//     console.log(body.__proto__.__proto__.__proto__.__proto__.__proto__); // => [[Prototype]]: Object => {Symbol(Symbol.toStringTag): 'EventTarget', addEventListener: ƒ, dispatchEvent: ƒ, removeEventListener: ƒ, constructor: ƒ}
+//     console.log(
+//         body.__proto__.__proto__.__proto__.__proto__.__proto__.__proto__
+//     ); // => {constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, …}
+//     console.log(
+//         body.__proto__.__proto__.__proto__.__proto__.__proto__.__proto__
+//             .__proto__
+//     ); // => null😃
+// };
+
+// // prototype in function
+// () => {
+//     const func = x => x + 1;
+//     console.log(func().__proto__); // Number {0, constructor: ƒ, toExponential: ƒ, toFixed: ƒ, toPrecision: ƒ, …}
+//     console.log(func().__proto__.__proto__); // {constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, …}
+//     console.log(func().__proto__.__proto__.__proto__); // null
+// };
+220;
+// // coding chalange for (OOP)
+// () => {
+//     const Car = function (mark, speed) {
+//         this.mark = mark;
+//         this.speed = Intl.NumberFormat(navigator.language, {
+//             style: 'unit',
+//             unit: 'kilometer-per-hour',
+//         }).format(speed);
+//     };
+//     const Benz = new Car('Benz', 260);
+//     Car.prototype.accelerate = function () {
+//         console.log(
+//             Intl.NumberFormat(navigator.language, {
+//                 style: 'unit',
+//                 unit: 'kilometer-per-hour',
+//             }).format(parseFloat(this.speed) + 10)
+//         );
+//     };
+//     Car.prototype.brake = function () {
+//         console.log(
+//             Intl.NumberFormat(navigator.language, {
+//                 style: 'unit',
+//                 unit: 'kilometer-per-hour',
+//             }).format(parseFloat(this.speed) - 5)
+//         );
+//     };
+//     Benz.accelerate(); // 270 km/h
+//     Benz.brake(); // 265
+// };
+221;
+// // classes in ES6
+// // 1. قبل از تعریف کردن کلاس‌ها نمی‌توان از آن استفاده کرد
+// // 2. اجرا می‌شود strict mode کلاس‌ها همیشه در حالت
+// // class Expression
+// () => {
+//     const Person = class {};
+//     console.log(new Person()); // Person {}
+// };
+
+// // class Declaration
+// () => {
+//     class Person {}
+//     console.log(new Person()); // Person {}
+// };
+
+// // set constructor function in class
+// () => {
+//     class Person {
+//         constructor(fName, lName) {
+//             this.firstName = fName;
+//             this.lastName = lName;
+//         }
+//     }
+//     const person1 = new Person('alireza', 'jodat');
+//     console.log(person1); // Person {firstName: 'alireza', lastName: 'jodat'}
+// };
+
+// // set method in class
+// () => {
+//     class Person {
+//         constructor(fName, lName) {
+//             this.firstName = fName;
+//             this.lastName = lName;
+//             this.showFullName = function () {
+//                 const { firstName, lastName } = this;
+//                 console.log(`${firstName} ${lastName}`); // alireza jodat
+//             };
+//         }
+//     }
+//     const person1 = new Person('alireza', 'jodat');
+//     person1.showFullName(); // alireza jodat
+// };
+
+// // set prototype in class
+// () => {
+//     class Person {
+//         constructor(fName, lName) {
+//             this.firstName = fName;
+//             this.lastName = lName;
+//         }
+//         // first and best way
+//         showFullName() {
+//             const { firstName, lastName } = this;
+//             console.log(`${firstName} ${lastName}`);
+//         }
+//     }
+//     const person1 = new Person('alireza', 'jodat');
+//     person1.showFullName(); // alireza jodat
+//     // second way
+//     Person.prototype.helloFunc = function () {
+//         console.log(`${this.firstName}, hello!!!`);
+//     };
+//     person1.helloFunc(); // alireza, hello!!!
+// };
+
+// // (person1.__proto__ === Person.prototype)
+// () => {
+//     class Person {
+//         constructor(fName, lName) {
+//             this.firstName = fName;
+//             this.lastName = lName;
+//         }
+//         showFullName() {
+//             const { firstName, lastName } = this;
+//             console.log(`${firstName} ${lastName}`);
+//         }
+//     }
+//     const person1 = new Person('alireza', 'jodat');
+//     console.log(person1.__proto__ === Person.prototype); // true
+// };
+222;
+// // Getters and Setters in regular object
+// () => {
+//     const acc = {
+//         own: 'ali',
+//         movs: [12, 4567, 778, 3],
+//         // Getters
+//         // شود return نتیجه نهایی حتما باید
+//         get latest() {
+//             return this.movs.slice(-1);
+//         },
+//         // Setters
+//         // باید حتما یک پارارمتر داشته باشد
+//         set latest(mov) {
+//             this.movs.push(mov);
+//         },
+//     };
+//     // Getters
+//     // باید همانند یک ویژگی معمولی در یک شیء صدا زده شود
+//     console.log(acc.latest); // [3]
+//     // Setters
+//     // باید حتما به صورت زیر صدا زده شود
+//     acc.latest = 85;
+//     console.log(acc.movs); // [12, 4567, 778, 3, 85]
+// };
+
+// // Getters and Setters in classes
+// () => {
+//     class Acc {
+//         constructor(own, movs) {
+//             this.own = own;
+//             this.movs = movs;
+//         }
+//         // Getters
+//         get latest() {
+//             return this.movs.slice(-1);
+//         }
+//         // Setters
+//         set latest(mov) {
+//             this.movs.push(mov);
+//         }
+//     }
+//     const acc1 = new Acc('ali', [1, 2, 3]);
+//     // Getters
+//     console.log(acc1.latest); // [3]
+//     // Setters
+//     acc1.latest = 85;
+//     console.log(acc1.movs); // [1, 2, 3, 85]
+// };
+
+// // practice for Getters and setters
+// // استفاده کردیم _fullName در مثال زیر برای اعتبار سنجی و نداشتن تداخل از نام متغیر
+// // را صدا می‌کنیم fullName همان Getters اما در
+// () => {
+//     class Family {
+//         constructor(fullName, age) {
+//             this.fullName = fullName;
+//             this.age = age;
+//         }
+//         // Setters
+//         set fullName(name) {
+//             name.includes(' ') ? (this._fullName = name) : console.log('Bad');
+//         }
+//         // Getters
+//         get fullName() {
+//             return this._fullName;
+//         }
+//     }
+//     const family1 = new Family('ali', 20); // Bad
+//     const family2 = new Family('ali reza', 20);
+//     console.log(family2.fullName); // ali reza
+// };
+223;
