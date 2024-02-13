@@ -3844,3 +3844,33 @@
 //     console.log(family2.fullName); // ali reza
 // };
 223;
+// static method
+// 1. in constructor function
+() => {
+    function Person(fName, lName) {
+        this.fName = fName;
+        this.lName = lName;
+    }
+    Person.hey = function () {
+        console.log('Hello...');
+    };
+    const ali = new Person('ali', 'jodat');
+    // متد‌های استاتیک به ارث برده نمی‌شوند
+    Person.hey(); // Hello...
+};
+
+// 2. in classes
+() => {
+    class Person {
+        constructor(fName, lName) {
+            this.fName = fName;
+            this.lName = lName;
+        }
+        static hey() {
+            console.log('Hello...');
+        }
+    }
+    const ali = new Person('ali', 'jodat');
+    // متد‌های استاتیک به ارث برده نمی‌شوند
+    Person.hey(); // Hello...
+};
