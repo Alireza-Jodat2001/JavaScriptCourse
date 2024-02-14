@@ -3844,33 +3844,135 @@
 //     console.log(family2.fullName); // ali reza
 // };
 223;
-// static method
-// 1. in constructor function
-() => {
-    function Person(fName, lName) {
-        this.fName = fName;
-        this.lName = lName;
-    }
-    Person.hey = function () {
-        console.log('Hello...');
-    };
-    const ali = new Person('ali', 'jodat');
-    // متد‌های استاتیک به ارث برده نمی‌شوند
-    Person.hey(); // Hello...
-};
+// // static method
+// // 1. in constructor function
+// () => {
+//     function Person(fName, lName) {
+//         this.fName = fName;
+//         this.lName = lName;
+//     }
+//     Person.hey = function () {
+//         console.log('Hello...');
+//     };
+//     const ali = new Person('ali', 'jodat');
+//     // متد‌های استاتیک به ارث برده نمی‌شوند
+//     Person.hey(); // Hello...
+// };
 
-// 2. in classes
-() => {
-    class Person {
-        constructor(fName, lName) {
-            this.fName = fName;
-            this.lName = lName;
-        }
-        static hey() {
-            console.log('Hello...');
-        }
-    }
-    const ali = new Person('ali', 'jodat');
-    // متد‌های استاتیک به ارث برده نمی‌شوند
-    Person.hey(); // Hello...
-};
+// // 2. in classes
+// () => {
+//     class Person {
+//         constructor(fName, lName) {
+//             this.fName = fName;
+//             this.lName = lName;
+//         }
+//         static hey() {
+//             console.log('Hello...');
+//         }
+//     }
+//     const ali = new Person('ali', 'jodat');
+//     // متد‌های استاتیک به ارث برده نمی‌شوند
+//     Person.hey(); // Hello...
+// };
+224;
+// // Object.create(...)
+// // به هر شیء دلخواه است prototype برای ست کردن دستی
+// () => {
+//     const PersonProto = {
+//         fName: 'alireza',
+//         hey() {
+//             console.log('Hello...');
+//         },
+//     };
+//     console.log(PersonProto); // {fName: 'alireza', hey: ƒ} => یک شیء معمولی
+//     const person1 = Object.create(PersonProto);
+//     // set species
+//     person1.lName = 'jodat'; // محسوب نمیشود prototype جزو
+//     console.log(person1); // [[Prototype]]: Object => منتقل می‌شود prototype به داخل PersonProto تمام ویژگی‌های ست شده
+//     person1.hey(); // Hello...
+//     console.log(person1.__proto__ === PersonProto); // true
+// };
+
+// // set species
+// () => {
+//     const PersonProto = {
+//         init(fName, lName) {
+//             this.firstName = fName;
+//             this.lastName = lName;
+//         },
+//     };
+//     const Person1 = Object.create(PersonProto);
+//     Person1.init('ali', 'jodat');
+//     console.log(Person1); // {firstName: "ali", lastName: "jodat", [[Prototype]]: Objectinit: ƒ init(fName, lName)}
+// };
+225;
+// // coding challenge
+// () => {
+//     class Car {
+//         constructor(make, speed) {
+//             this.make = make;
+//             this.speed = speed;
+//         }
+//         accelerate() {
+//             this.speed = parseFloat(this.speed) + 10;
+//             this.changeUnit();
+//             console.log(this.speed);
+//         }
+//         brake() {
+//             this.speed = parseFloat(this.speed) - 5;
+//             this.changeUnit();
+//             console.log(this.speed);
+//         }
+//         changeUnit() {
+//             this.speed = Intl.NumberFormat('en', {
+//                 style: 'unit',
+//                 unit: 'kilometer-per-hour',
+//             }).format(this.speed);
+//         }
+//         get speedUs() {
+//             return parseFloat(this.speed) / 1.6;
+//         }
+//         set speedUs(speed) {
+//             this.speed = Math.trunc(speed * 1.6);
+//             console.log(this.speed);
+//         }
+//     }
+//     const Benz = new Car('Benz', 200);
+//     Benz.accelerate(); // 210 km/h
+//     Benz.brake(); // 205 km/h
+//     Benz.speedUs = 50; // 80
+// };
+226;
+// // Inheritance between classes in (constructor function)
+// () => {
+//     const Person = function (name, family) {
+//         this.name = name;
+//         this.family = family;
+//     };
+//     Person.prototype.hey = function () {
+//         console.log('Hello...');
+//     };
+//     const Admin = function (name, family, course) {
+//         // استفاده کنیم call باید از this برای استفاده از کلمه کلیدی
+//         Person.call(this, name, family);
+//         this.course = course;
+//     };
+//     // Linking prototypes
+//     // قرار می‌دهیم Admin.prototype می‌سازیم و سپس در داخل شیء خالی Person.prototype ابتدا یک شیء کپی از  Object.create() با استفاده از
+//     // را به ارث ببریم و نه اینکه از خود آن استفاده کنیم Person.prototype نکته مهم این است که ما میخواهیم
+//     Admin.prototype = Object.create(Person.prototype);
+//     // changing constructor function
+//     // برمی‌گردانیم Admin را به constructor با این کار بخش
+//     // جلوگیری شود Person constructor تا در مواقع نیاز از رجوع به
+//     Admin.prototype.constructor = Admin;
+//     // Add greet prototype
+//     Admin.prototype.greet = function () {
+//         console.log(`hello ${this.name}`);
+//     };
+//     const Alireza = new Admin('Alireza', 'Jodat', 'computer');
+//     console.log(Alireza); // Admin {name: 'Alireza', family: 'Jodat', course: 'computer'}
+//     Alireza.greet(); // hello Alireza
+//     Alireza.hey(); // Hello...
+// };
+227;
+// coding challenge
