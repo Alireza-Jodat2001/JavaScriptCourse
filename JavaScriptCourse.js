@@ -3975,4 +3975,122 @@
 //     Alireza.hey(); // Hello...
 // };
 227;
-// coding challenge
+// // coding challenge
+// () => {
+//     // Car class
+//     const Car = function (make, speed) {
+//         this.make = make;
+//         this.speed = speed;
+//     };
+//     // Adding prototype
+//     Car.prototype.changeSpeedUnit = function () {
+//         console.log(
+//             Intl.NumberFormat('en', {
+//                 style: 'unit',
+//                 unit: 'mile-per-hour',
+//             }).format(Math.round(this.speed / 1.6))
+//         );
+//     };
+//     // EV class
+//     const EV = function (make, speed, charge) {
+//         Car.call(this, make, speed);
+//         this.charge = charge;
+//     };
+//     // Linking prototypes
+//     EV.prototype = Object.create(Car.prototype);
+//     // Add constructor
+//     EV.prototype.constructor = EV;
+//     // Adding prototype
+//     EV.prototype.showCharge = function () {
+//         console.log(
+//             Intl.NumberFormat('DE', { style: 'unit', unit: 'percent' }).format(
+//                 this.charge
+//             )
+//         );
+//     };
+//     // New EV car
+//     const Benz = new EV('Benz', 120, 29);
+//     // call method
+//     Benz.changeSpeedUnit(); // 75 mph
+//     Benz.showCharge(); // 29 %
+// };
+228;
+// // inheritance between classes
+// // 1. اگر فقط می‌خواهید که کلاس فرزند ارث بری کند از روش زیر استفاده نمایید
+// () => {
+//     class Person {
+//         constructor(fName, lName) {
+//             this.firstName = fName;
+//             this.lastName = lName;
+//         }
+//         hey() {
+//             console.log(`hello ${this.firstName}`);
+//         }
+//     }
+//     class Student extends Person {}
+//     const student1 = new Student('ali', 'jodat'); // Student {firstName: 'ali', lastName: 'jodat'}
+//     student1.hey(); // hello ali
+// };
+
+// // 2. اگر خواستید علاوه بر ارث بری ویژگی یا متد نیز اضافه کنید مراحل زیر را دنبال نمایید
+// () => {
+//     class Person {
+//         constructor(fName, lName) {
+//             this.firstName = fName;
+//             this.lastName = lName;
+//         }
+//         hey() {
+//             console.log(`hello ${this.firstName}`);
+//         }
+//     }
+//     class Student extends Person {
+//         constructor(fName, lName, age) {
+//             super(fName, lName);
+//             this.age = age;
+//         }
+//         hello() {
+//             console.log('Hello...');
+//         }
+//     }
+//     const student1 = new Student('ali', 'jodat', 21); // Student {firstName: 'ali', lastName: 'jodat', age: 21}
+//     student1.hey(); // hello ali
+//     student1.hello(); // Hello...
+// };
+
+// // 3. برای لغو کردن متدی که در والد وجود دارد باید یک متد در فرزند با همان نام ایجاد کنیم تا در موقع فراخوانی به سراغ والد نرود
+// () => {
+//     class Person {
+//         constructor(fName, lName) {
+//             this.firstName = fName;
+//             this.lastName = lName;
+//         }
+//         hey() {
+//             console.log(`hello ${this.firstName}`);
+//         }
+//     }
+//     class Student extends Person {
+//         constructor(fName, lName, age) {
+//             super(fName, lName);
+//             this.age = age;
+//         }
+//         hey() {
+//             console.log('I am inside Student class');
+//         }
+//     }
+//     const student1 = new Student('ali', 'jodat', 21); // Student {firstName: 'ali', lastName: 'jodat', age: 21}
+//     student1.hey(); // I am inside Student class => نمی‌رود Person اجرا می‌شود و به سراغ Student در اولین لایه یعنی
+// };
+229;
+// inheritance between classes (Object.create())
+(() => {
+    const CarProto = {
+        hey() {
+            console.log('hello');
+        },
+        init(fName) {
+            this.firstName = fName;
+        },
+    };
+    const Car = Object.create(CarProto);
+    console.log(Car);
+})();
