@@ -4081,16 +4081,184 @@
 //     student1.hey(); // I am inside Student class => نمی‌رود Person اجرا می‌شود و به سراغ Student در اولین لایه یعنی
 // };
 229;
-// inheritance between classes (Object.create())
-(() => {
-    const CarProto = {
-        hey() {
-            console.log('hello');
-        },
-        init(fName) {
-            this.firstName = fName;
-        },
-    };
-    const Car = Object.create(CarProto);
-    console.log(Car);
-})();
+// // inheritance between classes (Object.create())
+// // در این حالت باید مرحله به مرحله و به صورت زنجیر وار نمونه اولیه ها را انتقال دهیم
+// () => {
+//     // Prototypes
+//     const CarProto = {
+//         showMark() {
+//             console.log(this.mark);
+//         },
+//         init(mark) {
+//             this.mark = mark;
+//         },
+//     };
+//     const CarProto2 = {
+//         showSpeed() {
+//             console.log(this.speed);
+//         },
+//     };
+//     // Car
+//     // استفاده کنیم spread (...) برای اضافه کردن چند نمونه اولیه باید از
+//     const Car = Object.create({ ...CarProto, ...CarProto2 }); // important
+//     Car.init = function (mark, speed) {
+//         CarProto.init.call(this, mark);
+//         this.speed = speed;
+//     };
+//     // Benz
+//     const Benz = Object.create(Car);
+//     Benz.init = function (mark, speed, handling) {
+//         Car.init.call(this, mark, speed);
+//         this.handling = handling;
+//     };
+//     Benz.init('Benz', 260, 'good');
+//     Benz.showSpeed(); // 260
+//     Benz.showMark(); // Benz
+// };
+230;
+// // Example for classes
+// () => {
+//     class Accounts {
+//         constructor(owner, currency, pin) {
+//             this.owner = owner;
+//             this.currency = currency;
+//             this.pin = pin;
+//             // گاهی اوقات می‌توانیم مانند زیر مقدار دهی اولیه کنیم
+//             this.movments = [];
+//             this.locale = navigator.language;
+//         }
+//         deposit(value) {
+//             this.movments.push(value);
+//         }
+//         withraw(value) {
+//             this.deposit(-value);
+//         }
+//         approveLoan(value) {
+//             return true;
+//         }
+//         requestLoan(value) {
+//             this.approveLoan(value) && this.deposit(value);
+//         }
+//     }
+//     // testing
+//     const Account1 = new Accounts('Alireza Jodat', 'EUR', 1152);
+//     Account1.deposit(3_000_000);
+//     Account1.withraw(1_500_000);
+//     Account1.requestLoan(50_000_000);
+//     console.log(Account1); // Accounts {owner: 'Alireza Jodat', currency: 'EUR', pin: 1152, movments: Array(3), locale: 'en-US'}
+// };
+231;
+// // enCapsulation data (Fake)
+// // در این روش با گذاشتن _ از ویژگی‌های خود محافظت می‌کنیم
+// () => {
+//     class Accounts {
+//         constructor(owner, currency, pin) {
+//             this.owner = owner;
+//             this.currency = currency;
+//             this._pin = pin;
+//             // Protected Property
+//             this._movments = [];
+//             this.locale = navigator.language;
+//         }
+//         deposit(value) {
+//             this._movments.push(value);
+//         }
+//         withraw(value) {
+//             this.deposit(-value);
+//         }
+//         // Protected Prototype
+//         _approveLoan(value) {
+//             return true;
+//         }
+//         requestLoan(value) {
+//             this._approveLoan(value) && this.deposit(value);
+//         }
+//     }
+//     // testing
+//     const Account1 = new Accounts('Alireza Jodat', 'EUR', 1152);
+//     Account1.deposit(3_000_000);
+//     Account1.withraw(1_500_000);
+//     Account1.requestLoan(50_000_000);
+//     // Protected Property
+//     console.log(Account1.movments); // undefined
+//     console.log(Account1.pin); // undefined
+//     () => console.log(Account1.approveLoan(300)); // ERROR!!!!
+// };
+232;
+// // enCapsulation data
+// // 1) Public fields
+// () => {
+//     class Accounts {
+//         // Public fields
+//         locale = navigator.language;
+//         constructor(owner) {
+//             this.owner = owner;
+//         }
+//     }
+//     // testing
+//     const Account1 = new Accounts('Alireza Jodat');
+//     console.log(Account1.locale);
+// };
+
+// // 2) Private fields
+// () => {
+//     class Accounts {
+//         // Public fields
+//         locale = navigator.language;
+//         // Private fields
+//         #movments = [];
+//         // مقدار دهی شود از این روش استفاده می‌کنیم constructor هر وقت قرار است از داخل
+//         #pin;
+//         constructor(owner, pin) {
+//             this.owner = owner;
+//             this.#pin = pin;
+//         }
+//         variz(value) {
+//             this.#movments.push(value);
+//         }
+//     }
+//     // testing
+//     const Account1 = new Accounts('Alireza Jodat', 1152);
+//     // console.log(Account1.#movments); // ERROR!!!
+//     Account1.variz(300);
+//     console.log(Account1); // Accounts {locale: 'en-US', owner: 'Alireza Jodat', #movments: Array(1), #pin: 1152}
+// };
+// // Public and Private method
+// // هستند public تمامی متد‌ها به طور عادی
+// // و برای خصوصی کردن آنها نمی‌توان همانند ویژگی‌ها عمل کرد
+// // زیرا متد‌ها را تبدیل به ویژگی می‌کنند و از بخش نمونه اولیه خارج می‌سازند
+233;
+// // Chaining methods
+// // نکته مهم این است که در تمامی متدها باید برای قطع نشدن زنجیره خود کلاس را برگردانیم
+// () => {
+//     class Accounts {
+//         #pin;
+//         #movments = [];
+//         constructor(owner, currency, pin) {
+//             this.owner = owner;
+//             this.currency = currency;
+//             this.#pin = pin;
+//             this.locale = navigator.language;
+//         }
+//         deposit(value) {
+//             this.#movments.push(value);
+//             return this;
+//         }
+//         withraw(value) {
+//             this.deposit(-value);
+//             return this;
+//         }
+//         approveLoan(value) {
+//             return true;
+//         }
+//         requestLoan(value) {
+//             this.approveLoan(value) && this.deposit(value);
+//             return this;
+//         }
+//     }
+//     // testing
+//     const Account1 = new Accounts('Alireza Jodat', 'EUR', 1152);
+//     Account1.deposit(3_000_000).withraw(1_500_000).requestLoan(50_000_000);
+//     console.log(Account1); // Accounts {owner: 'Alireza Jodat', currency: 'EUR', locale: 'en-US', #pin: 1152, #movments: Array(3)}
+// };
+235;
