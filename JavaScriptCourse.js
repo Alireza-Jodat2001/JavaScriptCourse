@@ -4611,10 +4611,34 @@
 //    })();
 // };
 273;
-// Promise.All
-// نباشد میتوان از این روش استفاده کرد async هر‌گاه که لازم به اجرای
+// // Promise.All
+// // نباشد میتوان از این روش استفاده کرد async هر‌گاه که لازم به اجرای
 
-// getting 3 countries
-(() => {
-   async function get3Countries(country) {}
-})();
+// // getting 3 countries
+// () => {
+//    const URL = country => `https://restcountries.com/v3.1/name/${country}`;
+//    async function getJson(route) {
+//       const res = await fetch(URL(route));
+//       if (!res.ok) throw new Error('the country name is wrong!!!');
+//       return await res.json();
+//    }
+//    async function get3Countries() {
+//       try {
+//          const res = await Promise.all([
+//             getJson('usa'),
+//             getJson('australia'),
+//             getJson('germany'),
+//          ]);
+//          return res.map(country => country[0].name.common);
+//       } catch (err) {
+//          throw err.message;
+//       }
+//    }
+//    (async () => {
+//       try {
+//          console.log(await get3Countries());
+//       } catch (err) {
+//          console.log(err);
+//       }
+//    })();
+// };
