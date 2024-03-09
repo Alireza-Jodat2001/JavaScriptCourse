@@ -3662,6 +3662,7 @@
 // };
 220;
 // // coding chalange for (OOP)
+
 // () => {
 //     const Car = function (mark, speed) {
 //         this.mark = mark;
@@ -4262,3 +4263,218 @@
 //     console.log(Account1); // Accounts {owner: 'Alireza Jodat', currency: 'EUR', locale: 'en-US', #pin: 1152, #movments: Array(3)}
 // };
 235;
+// // coding challenge
+// () => {
+//     // Car class
+//     class Car {
+//         constructor(make, speed) {
+//             this.make = make;
+//             this.speed = speed;
+//         }
+//         changeSpeedUnit() {
+//             console.log(
+//                 Intl.NumberFormat('en', {
+//                     style: 'unit',
+//                     unit: 'mile-per-hour',
+//                 }).format(Math.round(this.speed / 1.6))
+//             );
+
+//             return this;
+//         }
+//     }
+
+//     // EV class
+//     class EV extends Car {
+//         // private
+//         #charge;
+//         constructor(make, speed, charge) {
+//             // instance Car class
+//             super(make, speed);
+//             this.#charge = charge;
+//         }
+//         showCharge() {
+//             console.log(
+//                 Intl.NumberFormat('DE', {
+//                     style: 'unit',
+//                     unit: 'percent',
+//                 }).format(this.#charge)
+//             );
+//             return this;
+//         }
+//     }
+
+//     // New EV car
+//     const Benz = new EV('Benz', 120, 29);
+
+//     // call method
+//     Benz.changeSpeedUnit() // 75 mph
+//         .showCharge(); // 29 %
+// };
+240;
+// // geolocation
+// // در صورت موفقیت آمیز بودن درخواست موقعیت مکانی تابع اول اجرا می‌شود و در غیر اینصورت تابع دوم اجرا می‌شود
+// () => {
+//     navigator.geolocation.getCurrentPosition(
+//         function (position) {
+//             const { latitude, longitude } = position.coords;
+//             console.log(latitude, longitude); // 35.7293801 51.8634809
+//         },
+//         function () {
+//             console.log('ERROR!!!');
+//         }
+//     );
+// };
+267;
+// // Promise
+// // ساختگی ایجاد کنیم Promise در ادامه میخواهیم یک
+// // را در دو خط متوالی قرار دهیم Promise , setTimeOut در حالت کلی اگر یک
+// // ها setTimeOut ها انجام میشوند و سپس microTask همانطور که میدانیم اول
+
+// // 1. به صورت زنجیر وار نوشتن
+// () => {
+//    let check = false;
+//    const myPromise = new Promise((resolve, reject) => {
+//       check ? resolve('I am S') : reject(new Error('I have a problem...'));
+//    });
+//    // consume promise
+//    myPromise
+//       .then(res => console.log(res))
+//       .catch(err => console.log(err.message));
+// };
+
+// // 2. به صورت جدا جدا
+// () => {
+//    let check = false;
+//    check && Promise.resolve('successfull...').then(res => console.log(res));
+//    !check &&
+//       Promise.reject(new Error('unSuccsessfull...')).catch(err =>
+//          console.log(err.message)
+//       );
+// };
+268;
+// // getting the geoLocation with Promise
+// () => {
+//    function getPosition() {
+//       return new Promise((resolve, reject) => {
+//          navigator.geolocation.getCurrentPosition(resolve, reject);
+//       });
+//    }
+//    getPosition()
+//       .then(pos => console.log(pos))
+//       .catch(err => console.log(err.message));
+// };
+
+// // Finding my location by geolocation and Api of geocode
+// () => {
+//    function getLocation() {
+//       return new Promise((resolve, reject) =>
+//          navigator.geolocation.getCurrentPosition(resolve, reject)
+//       );
+//    }
+
+//    function showCountry() {
+//       getLocation()
+//          .then(pos => {
+//             const { latitude: lat, longitude: lng } = pos.coords;
+//             return fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+//          })
+//          .then(res => {
+//             if (!res.ok) throw new Error(`Could not found (${res.status})`);
+//             res.json();
+//          })
+//          .then(data => console.log(data))
+//          .catch(err => console.log(err.message));
+//    }
+
+//    showCountry();
+// };
+269;
+// // Codeing challenge 2
+// // Management the loading of images by promise
+// () => {
+//    function createImage(imgSrc) {
+//       return new Promise((resolve, reject) => {
+//          const img = document.createElement('img');
+//          img.src = imgSrc;
+//          img.addEventListener('load', function () {
+//             document.body.append(img);
+//             resolve(this);
+//          });
+//          img.addEventListener('error', () =>
+//             reject(new Error(`Image not found.`))
+//          );
+//       });
+//    }
+
+//    function wait(sec) {
+//       return new Promise(resolve => setTimeout(resolve, sec * 1_000));
+//    }
+
+//    let currImg;
+//    createImage('Images/img-1.jpg')
+//       .then(img => {
+//          currImg = img;
+//          return wait(1);
+//       })
+//       .then(() => {
+//          currImg.style.display = 'none';
+//          return createImage('Images/img-2.jpg');
+//       })
+//       .then(img => {
+//          currImg = img;
+//          return wait(2);
+//       })
+//       .then(() => {
+//          currImg.style.display = 'none';
+//          return createImage('Images/img-3.jpg');
+//       })
+//       .then(img => {
+//          currImg = img;
+//          return wait(3);
+//       })
+//       .then(() => (currImg.style.display = 'none'))
+//       .catch(err => console.log(err.message));
+// };
+270;
+// // Async and Await
+
+// // Simple learning
+// () => {
+//    async function getCountry(country) {
+//       const res = await fetch(`https://restcountries.com/v3.1/name/${country}`);
+//       const data = await res.json();
+//       console.log(data); // 2
+//       console.log('seconde'); // 3
+//    }
+//    getCountry('usa');
+//    console.log('first'); // 1
+// };
+
+// // More advanced learning
+// () => {
+//    // get country
+//    async function getCountry(country) {
+//       const res = await fetch(`https://restcountries.com/v3.1/name/${country}`);
+//       return await res.json();
+//    }
+
+//    // find my location
+//    function getLoc() {
+//       return new Promise((resolve, reject) =>
+//          navigator.geolocation.getCurrentPosition(resolve, () => reject('a'))
+//       );
+//    }
+
+//    // Show my location and country
+//    async function showResult() {
+//       const { coords } = await getLoc();
+//       const { latitude: lat, longitude: lng } = coords;
+//       console.log(lat, lng); // 1
+
+//       const [{ name }] = await getCountry('usa');
+//       console.log(name.common); // 2
+//    }
+
+//    showResult();
+// };
+271;
