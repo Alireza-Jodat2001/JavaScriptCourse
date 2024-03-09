@@ -4478,3 +4478,143 @@
 //    showResult();
 // };
 271;
+// // try and catch
+// // دسترسی دارد error به تمامی
+
+// // simple learning
+// () => {
+//    try {
+//       let y = 0;
+//       const x = 5;
+//       x = 1;
+//    } catch (err) {
+//       console.log(err.message);
+//    }
+// };
+
+// // More advanced learning
+// () => {
+//    // get country
+//    async function getCountry(country) {
+//       const res = await fetch(`https://restcountries.com/v3.1/name/${country}`);
+//       if (!res.ok)
+//          throw new Error(`Could not found your country. (${res.status})`);
+//       return await res.json();
+//    }
+//    // find my location
+//    const getLoc = () =>
+//       new Promise((resolve, reject) =>
+//          navigator.geolocation.getCurrentPosition(
+//             resolve,
+//             reject.bind(new Error(`Could not find your location.`))
+//          )
+//       );
+//    // Show my location and country
+//    async function showResult() {
+//       try {
+//          const { coords } = await getLoc();
+//          const { latitude: lat, longitude: lng } = coords;
+//          console.log(lat, lng); // 1
+
+//          const [{ name }] = await getCountry('usa');
+//          console.log(name.common); // 2
+//       } catch (err) {
+//          console.log(err.message);
+//       }
+//    }
+//    // call func
+//    showResult();
+// };
+272;
+// // Returning value from async function
+// // است async اگر از روش مدرن استفاده می‌کنید حتما باید از تابعی استفاده کنید که
+
+// // Old way
+// () => {
+//    // get country
+//    async function getCountry(country) {
+//       const res = await fetch(`https://restcountries.com/v3.1/name/${country}`);
+//       if (!res.ok)
+//          throw new Error(`Could not found your country. (${res.status})`);
+//       return await res.json();
+//    }
+//    // find my location
+//    const getLoc = () =>
+//       new Promise((resolve, reject) =>
+//          navigator.geolocation.getCurrentPosition(
+//             resolve,
+//             reject.bind(new Error(`Could not find your location.`))
+//          )
+//       );
+//    // Show my location and country
+//    async function showResult() {
+//       try {
+//          const { coords } = await getLoc();
+//          const { latitude: lat, longitude: lng } = coords;
+//          const [{ name }] = await getCountry('usa');
+//          return `my loc in: [${lat}, ${lng}] and my country is: ${name.common}`;
+//       } catch (err) {
+//          throw err.message;
+//       }
+//    }
+//    // call func
+//    // Old way!!!!!!!
+//    // اگر میخواهید ترتیب اجرای کد‌ها حفظ شود همانند زیر عمل کنید
+//    console.log('1');
+//    showResult()
+//       .then(res => console.log(`2 ${res}`))
+//       .catch(err => console.log(`2 ${err}`))
+//       .finally(() => {
+//          console.log('3');
+//       });
+// };
+
+// // new way
+// () => {
+//    // get country
+//    async function getCountry(country) {
+//       const res = await fetch(`https://restcountries.com/v3.1/name/${country}`);
+//       if (!res.ok)
+//          throw new Error(`Could not found your country. (${res.status})`);
+//       return await res.json();
+//    }
+//    // find my location
+//    const getLoc = () =>
+//       new Promise((resolve, reject) =>
+//          navigator.geolocation.getCurrentPosition(
+//             resolve,
+//             reject.bind(new Error(`Could not find your location.`))
+//          )
+//       );
+//    // Show my location and country
+//    async function showResult() {
+//       try {
+//          const { coords } = await getLoc();
+//          const { latitude: lat, longitude: lng } = coords;
+//          const [{ name }] = await getCountry('usa');
+//          return `my loc in: [${lat}, ${lng}] and my country is: ${name.common}`;
+//       } catch (err) {
+//          throw err.message;
+//       }
+//    }
+//    // call func
+//    // new and best way!!!!!!!
+//    // اگر میخواهید ترتیب اجرای کد‌ها حفظ شود همانند زیر عمل کنید
+//    (async () => {
+//       try {
+//          console.log('1');
+//          console.log(`2 ${await showResult()}`);
+//          console.log('3');
+//       } catch (err) {
+//          console.log(err);
+//       }
+//    })();
+// };
+273;
+// Promise.All
+// نباشد میتوان از این روش استفاده کرد async هر‌گاه که لازم به اجرای
+
+// getting 3 countries
+(() => {
+   async function get3Countries(country) {}
+})();
