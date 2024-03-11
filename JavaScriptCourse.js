@@ -4642,3 +4642,120 @@
 //       }
 //    })();
 // };
+274;
+// Promise.race
+// رفتار می‌کنیم Promise.all همانند Promise در این نوع از
+// بسته میشود Promise اما تفاوت های آنها در این است که هر واکشی ای که زودتر انجام شود همان مقدار برگردانده میشود و
+// response و فرقی ندارد که در این مورد با خطا مواجه شود یا
+() => {
+   // Create URL and Response
+   function getJson(country) {
+      // Create URL
+      const URL = `https://restcountries.com/v3.1/name/${country}`;
+      // Create Response
+      return async () => {
+         const res = await fetch(URL);
+         if (!res.ok) throw new Error('the country name is wrong!!!');
+         return await res.json();
+      };
+   }
+   // Promise Race Function
+   async function promiseRace() {
+      try {
+         const res = await Promise.race([
+            getJson('usa')(),
+            getJson('italy')(),
+            getJson('germany')(),
+         ]);
+         return res;
+      } catch (err) {
+         return err.message;
+      }
+   }
+   // Call Promise Race
+   (async function () {
+      try {
+         console.log(await promiseRace());
+      } catch (err) {
+         console.log(err);
+      }
+   })();
+};
+
+// setTimeout ایجاد خطا به وسیله
+// به عنوان مثال اگر کاربران ما اینترنت ضعیفی داشته باشند
+// های غیر ضروری را رد کنیم Promise با این کار می‌توانیم
+() => {
+   // Create URL and Response
+   function getJson(country) {
+      // Create URL
+      const URL = `https://restcountries.com/v3.1/name/${country}`;
+      // Create Response
+      return async () => {
+         const res = await fetch(URL);
+         if (!res.ok) throw new Error('the country name is wrong!!!');
+         return await res.json();
+      };
+   }
+   // Create Error with setTimeout
+   async function fakeError(sec) {
+      return await new Promise((_, reject) => {
+         setTimeout(() => reject(new Error('Fake Error!!!')), sec * 1000);
+      });
+   }
+   // Promise Race Function
+   async function promiseRace() {
+      try {
+         const res = await Promise.race([getJson('usa')(), fakeError(1)]);
+         return res;
+      } catch (err) {
+         return err.message;
+      }
+   }
+   // Call Promise Race
+   (async function () {
+      try {
+         console.log(await promiseRace());
+      } catch (err) {
+         console.log(err);
+      }
+   })();
+};
+
+// Promise.allSettled
+// رفتار خواهیم کرد Promise.all همانند Promise در این
+// های دیگر متوقف نمی‌شوند Promise این است که در صورت وجود خطا Promise.all اما تفاوت آن با
+() => {
+   // Create URL and Response
+   function getJson(country) {
+      // Create URL
+      const URL = `https://restcountries.com/v3.1/name/${country}`;
+      // Create Response
+      return async () => {
+         const res = await fetch(URL);
+         if (!res.ok) throw new Error('the country name is wrong!!!');
+         return await res.json();
+      };
+   }
+   // Promise Race Function
+   async function promiseRace() {
+      try {
+         const res = await Promise.allSettled([
+            getJson('usa')(),
+            getJson('italyjkag')(),
+            getJson('germanyuiibkb')(),
+         ]);
+         return res;
+      } catch (err) {
+         return err.message;
+      }
+   }
+   // Call Promise Race
+   (async function () {
+      try {
+         console.log(await promiseRace()); // fulfilled و یک عدد reject دو عدد
+      } catch (err) {
+         console.log(err);
+      }
+   })();
+};
