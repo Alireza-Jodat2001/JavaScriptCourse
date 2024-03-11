@@ -4945,3 +4945,17 @@
 // console.log('end fetching...');
 
 // // در بالاترین لول از کد میتواند باعث مسدود شدن ماژول های دیگر نیز شود await و در آخر استفاده از
+282;
+// // راهی برای فرار از متغیر های گلوبال
+// // کنیم export و سپس یاد خواهیم گرفت که چگونه آنها را
+// const cardMethods = (() => {
+//    const cardQ = 12;
+//    function showCard() {
+//       console.log('el');
+//    }
+//    return { cardQ, showCard };
+// })();
+// cardMethods.showCard(); // el
+// console.log(cardMethods.cardQ); // 12
+// export { cardMethods }; // exported
+284;
