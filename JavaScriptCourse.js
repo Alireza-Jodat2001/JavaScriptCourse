@@ -4643,119 +4643,243 @@
 //    })();
 // };
 274;
-// Promise.race
-// رفتار می‌کنیم Promise.all همانند Promise در این نوع از
-// بسته میشود Promise اما تفاوت های آنها در این است که هر واکشی ای که زودتر انجام شود همان مقدار برگردانده میشود و
-// response و فرقی ندارد که در این مورد با خطا مواجه شود یا
-() => {
-   // Create URL and Response
-   function getJson(country) {
-      // Create URL
-      const URL = `https://restcountries.com/v3.1/name/${country}`;
-      // Create Response
-      return async () => {
-         const res = await fetch(URL);
-         if (!res.ok) throw new Error('the country name is wrong!!!');
-         return await res.json();
-      };
-   }
-   // Promise Race Function
-   async function promiseRace() {
-      try {
-         const res = await Promise.race([
-            getJson('usa')(),
-            getJson('italy')(),
-            getJson('germany')(),
-         ]);
-         return res;
-      } catch (err) {
-         return err.message;
-      }
-   }
-   // Call Promise Race
-   (async function () {
-      try {
-         console.log(await promiseRace());
-      } catch (err) {
-         console.log(err);
-      }
-   })();
-};
+// // Promise.race
+// // رفتار می‌کنیم Promise.all همانند Promise در این نوع از
+// // بسته میشود Promise اما تفاوت های آنها در این است که هر واکشی ای که زودتر انجام شود همان مقدار برگردانده میشود و
+// // response و فرقی ندارد که در این مورد با خطا مواجه شود یا
+// () => {
+//    // Create URL and Response
+//    function getJson(country) {
+//       // Create URL
+//       const URL = `https://restcountries.com/v3.1/name/${country}`;
+//       // Create Response
+//       return async () => {
+//          const res = await fetch(URL);
+//          if (!res.ok) throw new Error('the country name is wrong!!!');
+//          return await res.json();
+//       };
+//    }
+//    // Promise Race Function
+//    async function promiseRace() {
+//       try {
+//          const res = await Promise.race([
+//             getJson('usa')(),
+//             getJson('italy')(),
+//             getJson('germany')(),
+//          ]);
+//          return res;
+//       } catch (err) {
+//          return err.message;
+//       }
+//    }
+//    // Call Promise Race
+//    (async function () {
+//       try {
+//          console.log(await promiseRace());
+//       } catch (err) {
+//          console.log(err);
+//       }
+//    })();
+// };
 
-// setTimeout ایجاد خطا به وسیله
-// به عنوان مثال اگر کاربران ما اینترنت ضعیفی داشته باشند
-// های غیر ضروری را رد کنیم Promise با این کار می‌توانیم
-() => {
-   // Create URL and Response
-   function getJson(country) {
-      // Create URL
-      const URL = `https://restcountries.com/v3.1/name/${country}`;
-      // Create Response
-      return async () => {
-         const res = await fetch(URL);
-         if (!res.ok) throw new Error('the country name is wrong!!!');
-         return await res.json();
-      };
-   }
-   // Create Error with setTimeout
-   async function fakeError(sec) {
-      return await new Promise((_, reject) => {
-         setTimeout(() => reject(new Error('Fake Error!!!')), sec * 1000);
-      });
-   }
-   // Promise Race Function
-   async function promiseRace() {
-      try {
-         const res = await Promise.race([getJson('usa')(), fakeError(1)]);
-         return res;
-      } catch (err) {
-         return err.message;
-      }
-   }
-   // Call Promise Race
-   (async function () {
-      try {
-         console.log(await promiseRace());
-      } catch (err) {
-         console.log(err);
-      }
-   })();
-};
+// // setTimeout ایجاد خطا به وسیله
+// // به عنوان مثال اگر کاربران ما اینترنت ضعیفی داشته باشند
+// // های غیر ضروری را رد کنیم Promise با این کار می‌توانیم
+// () => {
+//    // Create URL and Response
+//    function getJson(country) {
+//       // Create URL
+//       const URL = `https://restcountries.com/v3.1/name/${country}`;
+//       // Create Response
+//       return async () => {
+//          const res = await fetch(URL);
+//          if (!res.ok) throw new Error('the country name is wrong!!!');
+//          return await res.json();
+//       };
+//    }
+//    // Create Error with setTimeout
+//    async function fakeError(sec) {
+//       return await new Promise((_, reject) => {
+//          setTimeout(() => reject(new Error('Fake Error!!!')), sec * 1000);
+//       });
+//    }
+//    // Promise Race Function
+//    async function promiseRace() {
+//       try {
+//          const res = await Promise.race([getJson('usa')(), fakeError(1)]);
+//          return res;
+//       } catch (err) {
+//          return err.message;
+//       }
+//    }
+//    // Call Promise Race
+//    (async function () {
+//       try {
+//          console.log(await promiseRace());
+//       } catch (err) {
+//          console.log(err);
+//       }
+//    })();
+// };
 
-// Promise.allSettled
-// رفتار خواهیم کرد Promise.all همانند Promise در این
-// های دیگر متوقف نمی‌شوند Promise این است که در صورت وجود خطا Promise.all اما تفاوت آن با
-() => {
-   // Create URL and Response
-   function getJson(country) {
-      // Create URL
-      const URL = `https://restcountries.com/v3.1/name/${country}`;
-      // Create Response
-      return async () => {
-         const res = await fetch(URL);
-         if (!res.ok) throw new Error('the country name is wrong!!!');
-         return await res.json();
-      };
-   }
-   // Promise Race Function
-   async function promiseRace() {
-      try {
-         const res = await Promise.allSettled([
-            getJson('usa')(),
-            getJson('italyjkag')(),
-            getJson('germanyuiibkb')(),
-         ]);
-         return res;
-      } catch (err) {
-         return err.message;
-      }
-   }
-   // Call Promise Race
-   (async function () {
-      try {
-         console.log(await promiseRace()); // fulfilled و یک عدد reject دو عدد
-      } catch (err) {
-         console.log(err);
-      }
-   })();
-};
+// // Promise.allSettled
+// // رفتار خواهیم کرد Promise.all همانند Promise در این
+// // های دیگر متوقف نمی‌شوند Promise این است که در صورت وجود خطا Promise.all اما تفاوت آن با
+// () => {
+//    // Create URL and Response
+//    function getJson(country) {
+//       // Create URL
+//       const URL = `https://restcountries.com/v3.1/name/${country}`;
+//       // Create Response
+//       return async () => {
+//          const res = await fetch(URL);
+//          if (!res.ok) throw new Error('the country name is wrong!!!');
+//          return await res.json();
+//       };
+//    }
+//    // Promise allSettled Function
+//    async function promiseAllSattled() {
+//       try {
+//          const res = await Promise.allSettled([
+//             getJson('usa')(),
+//             getJson('italyjkag')(),
+//             getJson('germanyuiibkb')(),
+//          ]);
+//          return res;
+//       } catch (err) {
+//          return err.message;
+//       }
+//    }
+//    // Call Promise allSattled
+//    (async function () {
+//       try {
+//          console.log(await promiseAllSattled()); // fulfilled و یک عدد reject دو عدد
+//       } catch (err) {
+//          console.log(err);
+//       }
+//    })();
+// };
+
+// // Promise.any
+// // دو حالت ممکن است پیش بیاید Promise در این
+// // موفق برگردانده میشود Promise مورد اول اینکه یا اولین
+// // به نمایش گذاشته میشود All promises were rejected ها مردود باشند پیغام Promise یا اگر تمام
+// () => {
+//    // Create URL and Response
+//    function getJson(country) {
+//       // Create URL
+//       const URL = `https://restcountries.com/v3.1/name/${country}`;
+//       // Create Response
+//       return async () => {
+//          const res = await fetch(URL);
+//          if (!res.ok) throw new Error('the country name is wrong!!!');
+//          return await res.json();
+//       };
+//    }
+//    // Promise any Function
+//    async function promiseAny() {
+//       try {
+//          const promises = [
+//             getJson('italyas')(),
+//             getJson('usaas')(),
+//             getJson('germanyas')(),
+//          ];
+//          const res = await Promise.any(promises);
+//          return res;
+//       } catch (err) {
+//          return err.message;
+//       }
+//    }
+//    // Call Promise any
+//    (async function () {
+//       try {
+//          console.log(await promiseAny()); // All promises were rejected
+//       } catch (err) {
+//          console.log(err);
+//       }
+//    })();
+// };
+275;
+// // Codeing Challenge
+// // Load image
+
+// // Refactoring the Loading img of codeing challenge
+// () => {
+//    // Create images
+//    async function createImage(imgSrc) {
+//       return await new Promise((resolve, reject) => {
+//          const img = document.createElement('img');
+//          img.src = imgSrc;
+//          // successfull load
+//          img.addEventListener('load', function () {
+//             document.body.append(img);
+//             resolve(this);
+//          });
+//          // unsuccessfull load
+//          img.addEventListener('error', () =>
+//             reject(new Error(`Image not found.`))
+//          );
+//       });
+//    }
+//    // wait function
+//    const wait = async sec =>
+//       await new Promise(resolve => setTimeout(resolve, sec * 1_000));
+//    // Loading images function
+//    async function loadingImages() {
+//       try {
+//          let currImg;
+//          // Image 1
+//          currImg = await createImage('Images/img-1.jpg');
+//          await wait(2);
+//          currImg.style.display = 'none';
+//          // Image 2
+//          currImg = await createImage('Images/img-2.jpg');
+//          await wait(2);
+//          currImg.style.display = 'none';
+//          // Image 3
+//          currImg = await createImage('Images/img-3.jpg');
+//          await wait(2);
+//          currImg.style.display = 'none';
+//       } catch (err) {
+//          console.log(err.message);
+//       }
+//    }
+//    // Call Loading Images
+//    (async () => await loadingImages())();
+// };
+
+// // Load All image
+// // استفاده کنیم Promise.all باید از promise برای خارج کردن نتیجه از حالت
+// () => {
+//    // Create images
+//    async function createImage(imgSrc) {
+//       return await new Promise((resolve, reject) => {
+//          const img = document.createElement('img');
+//          img.src = imgSrc;
+//          // successfull load
+//          img.addEventListener('load', function () {
+//             document.body.append(img);
+//             resolve(this);
+//          });
+//          // unsuccessfull load
+//          img.addEventListener('error', () =>
+//             reject(new Error(`Image not found.`))
+//          );
+//       });
+//    }
+//    // load All Img function
+//    async function loadAllImg() {
+//       try {
+//          // prettier-ignore
+//          const imgArr = ['Images/img-1.jpg', 'Images/img-2.jpg', 'Images/img-3.jpg'];
+//          const allPromise = imgArr.map(
+//             async imgSrc => await createImage(imgSrc)
+//          );
+//          const allImg = await Promise.all(allPromise);
+//          allImg.forEach(img => (img.style.width = '500px'));
+//       } catch (err) {
+//          console.log(err.message);
+//       }
+//    }
+//    loadAllImg();
+// };
