@@ -4883,3 +4883,29 @@
 //    }
 //    loadAllImg();
 // };
+280;
+// Import and  Export
+// اگر پروژه ای بدون فریم ورک دارید برای استفاده از این قابلیت باید
+// را انتخاب کنیم type="module" خود HTML در فایل
+
+// simple example for the import of module
+import { cardCl } from './cardC.js';
+
+// simple example for the export of module
+export function show() {
+   console.log('show');
+}
+
+// بگذاریم باید اینگونه بنویسیم import , export اگر میخواهیم نام دلخواه برای موارد
+// for import
+import { cardCl as myCard } from './cardC.js';
+
+// for Export
+function show() {
+   console.log('show');
+}
+export { show as showEl };
+// کردن import و در هنگام
+import { showEl } from './cardC.js';
+
+('13m');
