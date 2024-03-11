@@ -4884,28 +4884,64 @@
 //    loadAllImg();
 // };
 280;
-// Import and  Export
-// اگر پروژه ای بدون فریم ورک دارید برای استفاده از این قابلیت باید
-// را انتخاب کنیم type="module" خود HTML در فایل
+// // Import and  Export
+// // اگر پروژه ای بدون فریم ورک دارید برای استفاده از این قابلیت باید
+// // را انتخاب کنیم type="module" خود HTML در فایل
 
-// simple example for the import of module
-import { cardCl } from './cardC.js';
+// // simple example for the import of module
+// import { cardCl } from './cardC.js';
+// // simple example for the export of module
+// export function show() {
+//    console.log('show');
+// }
 
-// simple example for the export of module
-export function show() {
-   console.log('show');
-}
+// // بگذاریم باید اینگونه بنویسیم import , export اگر میخواهیم نام دلخواه برای موارد
+// // for import
+// import { cardCl as myCard } from './cardC.js';
+// // for Export
+// function show() {
+//    console.log('show');
+// }
+// export { show as showEl };
+// // کردن import و در هنگام
+// import { showEl } from './cardC.js';
 
-// بگذاریم باید اینگونه بنویسیم import , export اگر میخواهیم نام دلخواه برای موارد
-// for import
-import { cardCl as myCard } from './cardC.js';
+// // شده export کردن تمامی موارد import استفاده از * برای
+// import * as allFunctions from './cardC.js';
+// // how to use?
+// allFunctions.addToCard(1, 'clothes');
 
-// for Export
-function show() {
-   console.log('show');
-}
-export { show as showEl };
-// کردن import و در هنگام
-import { showEl } from './cardC.js';
+// // استفاده کرد export default کنیم میتوان از export هرگاه خواستیم تنها یک مقدار را
+// export default show;
+// // how to import?
+// // بدون {} باید بنویسیم
+// import show from './cardC.js';
 
-('13m');
+// // export , export default استفاده ترکیبی از
+// import show, { showEl } from './cardC.js';
+
+// // ها مقدار های شیء و آرایه بروزرسانی میشوند module در تمامی
+281;
+// // به تنهایی در کد await استفاده از
+// // از کد باشد level نکته مهم این است که باید در بالاترین
+// // استفاده میشود asyn در غیر اینصورت باید درون تابعی باشد که در آن از
+// // باشد type="module" برای اینکار حتما باید فایل شما دارای
+
+// // مثال اول
+// console.log('start fetching...');
+// const res = await fetch('https://jsonplaceholder.typicode.com/users');
+// const users = await res.json();
+// console.log(users);
+// console.log('end fetching...');
+
+// // مثال دوم
+// console.log('---- seconde example ----');
+// async function getLastUsers() {
+//    const res = await fetch('https://jsonplaceholder.typicode.com/users');
+//    const users = await res.json();
+//    return { id: users.at(-1).name, name: users.at(-1).name };
+// }
+// console.log(await getLastUsers());
+// console.log('end fetching...');
+
+// // در بالاترین لول از کد میتواند باعث مسدود شدن ماژول های دیگر نیز شود await و در آخر استفاده از
