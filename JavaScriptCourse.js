@@ -4958,4 +4958,105 @@
 // cardMethods.showCard(); // el
 // console.log(cardMethods.cardQ); // 12
 // export { cardMethods }; // exported
-284;
+285;
+// // how to use of third party library (lodash)
+// // در این صورت میتوان به صورت عمیق از یک شیء کپی گرفت
+// // بر خلاف یک روش قدیمی که کپی کم عمق میگرفت از شیء
+// import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+// () => {
+//    const arr = { id: 1, user: 1, owners: ['ali', 'bezi'] };
+//    // old way
+//    // که کپی کم عمق میگیرد
+//    // const newArr = Object.assign({}, arr)
+//    const copyArr = cloneDeep(arr);
+//    arr.company = 'Digikala';
+//    console.log(copyArr);
+//    console.log(arr);
+// };
+286;
+// // how to install the parcel
+// // enter the command on the following
+// // ==> npm i parcel --save-dev
+// // اگر دستور ما به خطا خورد به شکل زیر رفع اشکال خواهیم کرد
+// // ==> sudo npm i parcel
+// // اگر باز هم حل نشد مراحل زیر را امتحان کنید
+// // ==> npm i parcel@1.12.4
+// // باید یک فایل ورودی به آن بدهیم
+// // ==> npx parcel index.html
+// // اگر هم خواستید پاک کنید دستور زیر را اجرا کنید
+// // ==> npm uninstall parcel
+// // اگر درون پروژه خود ماژول های متفاوت داشتید ممکن است به خطا بخورید
+// // از تگ اسکریپت است type="module" تنها راهکار آن پاک کردن
+// // با استفاده از قطعه کد زیر دیگر لازم نیست برای دیدن تغییرات حتما صفحه بارگذاری مجدد شود
+// import cloneDeep from 'lodash';
+// (() => {
+//    const arr = { id: 1, user: 1, owners: ['ali', 'bezi'] };
+//    const copyArr = cloneDeep(arr);
+//    arr.company = 'Digikala';
+//    console.log(copyArr);
+//    console.log(arr);
+// })();
+if (module.hot) module.hot.accept();
+// // را در مسیر فایل نوشت lodash و نکته دوم اینکه به راحتی میتوان فقط
+// // parcel نحوه نوشتن دو تا از مهم ترین اسکریپت ها برای
+// // "start": "parcel index.html"
+// // "build": "parcel build index.html"
+287;
+// how to use of BABEL
+// ES برای برگرداندن سینتکس به ورژن های قدیمی تر
+// دستور زیر را به که کار میبریم arrow function برای برگرداندن چیز هایی مانند سینکس متد های آرایه یا
+import 'core-js/stable';
+// از دستور زیر استفاده میکنیم async , await برای برگرداندن کلمات کلیدی همچون
+import 'regenerator-runtime/runtime';
+291;
+// // فریز کردن اشیاء و آرایه ها به منظور تغییر ناپذیری آنها
+// // اما این روش کم عمق است و لایه های درونی را پشتیبانی نمیکند
+// const arr = Object.freeze([1, 2, { user: 'ali' }]);
+// // arr.push(2) // Error!!!
+// const obj = Object.freeze({ user: 'ali', owners: [1, 23, 4] });
+// // obj.jay = 'jay' // Error!!!
+
+// // best way
+// // ما در این روش شیء اصلی خود را فریز کرده اما
+// // با استفاده از یک ترفند از آن کپی میگیریم و سپس موارد دلخواه را تغییر میدهیم
+// // است useReducer در state این روش بسیار روش مشابه به تغییر
+
+// // مثال اول
+// () => {
+//    // person info object
+//    const personInfo = Object.freeze({
+//       name: 'Alireza',
+//       family: 'Jodat',
+//       age: 22,
+//       average: 19.25,
+//    });
+//    // manipulation the object
+//    function manipulationObject(entryObject) {
+//       return { ...entryObject, average: 18 };
+//    }
+//    const newPersonInfo = manipulationObject(personInfo);
+//    console.log(newPersonInfo); // {name: 'Alireza', family: 'Jodat', age: 22, average: 18}
+// };
+
+// // مثال دوم
+// () => {
+//    // movments Array
+//    const movments = Object.freeze([
+//       { value: 1000 },
+//       { value: 1250 },
+//       { value: 2000 },
+//       { value: 10 },
+//    ]);
+//    // manipulation the Array
+//    const manipulationArray = entryArray =>
+//       entryArray.map(movmentObj => {
+//          const checkMov = movmentObj.value > 1000;
+//          const newMov = checkMov
+//             ? { ...movmentObj, value: 'limited' }
+//             : { ...movmentObj };
+//          return { ...newMov };
+//       });
+
+//    console.log(manipulationArray(movments));
+//    console.log(movments);
+// };
